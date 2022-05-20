@@ -1,0 +1,26 @@
+game board - 2d array - accessed via indices, first being letters second being numbers ([file][rank]) eg board[4][3] = e4
+
+array of Square objects? js not class based - prototypes?
+
+let board = [
+	[Square, Square, ... Square],
+	[Square, Square, ... Square],
+	...
+	[Square, Square, ... Square]
+];
+
+inherently polymorphic - piece prototype, subclasses override move method etc
+
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
+
+to define  prototype:
+
+const myProto = {
+	myProperty: myValue,
+	myMethod() {
+		some code;
+	}
+}
+
+let myObject = Object.create(myProto);
+myObject.myMethod();

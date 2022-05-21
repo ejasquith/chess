@@ -35,6 +35,7 @@ As a user, I want to:
 
 - To provide a free way to play chess against a friend or family member without owning a physical board;
 - To be simple and easy to navigate and play;
+- To provide full functionality of game history;
 - To explain the rules of chess to those who need it;
 - To be fully accessible and have options to change the colour scheme of the website and board area;
 - Provide a session score tracker;
@@ -43,4 +44,8 @@ As a user, I want to:
 ## How This Will Be Achieved
 
 - The game will be entirely browser-based, requiring no downloads, sign ups, or payment;
-- 
+- The project will be a single-page application (SPA), with a togglable pop-up for rules explanations;
+- The site will be able to programmatically change its colour scheme based on user input;
+- The site will have an area to display the previous moves in the current game and arrow buttons to cycle through the moves;
+- The site will store the amount of games in the session, and track which player played with which colour each game;
+- The site will display the amount of session wins for each player.

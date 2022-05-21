@@ -1,5 +1,11 @@
 game board - 2d array - accessed via indices, first being letters second being numbers ([file][rank]) eg board[4][3] = e4
 
+function getCoords(num1, num2) {
+  let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+  return letters[num1] + (num2+1);
+}
+console.log(getCoords(4,3)); // 'e4'
+
 array of Square objects? js not class based - prototypes?
 
 let board = [
@@ -9,11 +15,25 @@ let board = [
 	[Square, Square, ... Square]
 ];
 
+maybe not square objects? - is there any special properties to the square that can't be achieved by just inserting divs into html grid
+
+let board = [
+  ['r', 'n', 'b', 'q', 'k', ... 'r'],   // 1st rank
+  ['p', 'p', ... 'p'],                  // 2nd rank etc
+  ['', '', ... ''],
+  ['', '', ... ''],
+  ...
+  ['p', 'p', ... 'p'],
+  ['r', 'n', 'b', 'q', 'k', ... 'r']
+]
+do we use letter representations or piece objects? have to use piece objects - need props like hasMoved etc, cant generate objects on the fly
+
+
 inherently polymorphic - piece prototype, subclasses override move method etc
 
 https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
 
-to define  prototype:
+to define prototype:
 
 const myProto = {
 	myProperty: myValue,
@@ -24,3 +44,22 @@ const myProto = {
 
 let myObject = Object.create(myProto);
 myObject.myMethod();
+
+custom constructor? pass in piece colour
+
+wait hold on there are literally classes in js. oops.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+https://caniuse.com/?search=class
+
+not supported by older broswer versions (or at all on opera mini & ie)
+supported for 94.93% of users
+popup if not supported?
+
+class Piece {
+	// class body
+}
+class Rook extends Piece {
+	//subclass body
+}

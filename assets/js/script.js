@@ -20,10 +20,10 @@ function initialiseBoard() {
             if (rank === 0 || rank === 7) {
                 // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                html = `<div class="square piece${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
+                html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
             } else if (rank === 1 || rank === 6) {
                 rankArray.push({piece: 'pawn', colour: colour});
-                html = `<div class="square pawn${colour}" data-file="${file}" data-rank="${rank}">pawn</div>`
+                html = `<div class="square pawn-${colour}" data-file="${file}" data-rank="${rank}">pawn</div>`
             } else {
                 rankArray.push();
                 html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`

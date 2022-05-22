@@ -3,6 +3,34 @@ document.addEventListener('DOMContentLoaded', function() {
     initialiseBoard();
 });
 
+function getCoords(file, rank) {
+    const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    return letters[file] + (rank+1);
+  }
+
 function initialiseBoard() {
-    
+    let board = [];
+
+    for (let rank = 0; rank < 8; rank++) {
+        let rankArray = [];
+        let colour = (rank <= 1) ? 'white' : 'black';
+
+        for (let file = 0; file < 8; file++) {
+            let html='';
+            if (rank === 0 || rank === 7) {
+                // pieces
+                rankArray.push({piece: 'piece', colour: colour});
+                html = `<div class="square" data-file="${file}" data-rank="${rank}">piece</div>`
+            } else if (rank === 1 || rank === 6) {
+                rankArray.push({piece: 'pawn', colour: colour});
+                html = `<div class="square" data-file="${file}" data-rank="${rank}">pawn</div>`
+            } else {
+                rankArray.push();
+                html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`
+            }
+
+            document.getElementById('board').innerHTML += html;
+        }
+        board.push(rankArray);
+    }
 }

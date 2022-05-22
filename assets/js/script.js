@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function getCoords(file, rank) {
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     return letters[file] + (rank+1);
-  }
+}
 
 function initialiseBoard() {
     let board = [];
@@ -18,12 +18,12 @@ function initialiseBoard() {
         for (let file = 0; file < 8; file++) {
             let html='';
             if (rank === 0 || rank === 7) {
-                // pieces
+                // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                html = `<div class="square" data-file="${file}" data-rank="${rank}">piece</div>`
+                html = `<div class="square piece${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
             } else if (rank === 1 || rank === 6) {
                 rankArray.push({piece: 'pawn', colour: colour});
-                html = `<div class="square" data-file="${file}" data-rank="${rank}">pawn</div>`
+                html = `<div class="square pawn${colour}" data-file="${file}" data-rank="${rank}">pawn</div>`
             } else {
                 rankArray.push();
                 html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`

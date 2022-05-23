@@ -62,23 +62,22 @@ function initialiseBoard() {
         let colour = (rank <= 1) ? 'white' : 'black';
 
         for (let file = 0; file < 8; file++) {
+            let html = '';
             if (rank === 0 || rank === 7) {
                 // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                html.push(`<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`);
+                html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`;
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);
-                html.push(`<div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div>`);
+                html = `<div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div>`;
             } else {
                 rankArray.push();
-                html.push(`<div class="square" data-file="${file}" data-rank="${rank}"></div>`);
+                html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`;
             }
+            document.getElementById('board').innerHTML += html;
         }
         board.push(rankArray);
-    }
-    for (let node of html) {
-        document.getElementById('board').innerHTML += node;
     }
     return board;
 }

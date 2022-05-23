@@ -26,10 +26,12 @@ class Pawn extends Piece {
         if (!this.hasMoved && board[this.position.file][this.position.rank+2] === undefined) {
             moves.push([this.position.file, this.position.rank+2]);
         }
-        if (board[this.position.file+1][this.position.rank+1] !== undefined) {
+        if (board[this.position.file+1][this.position.rank+1] !== undefined 
+            && board[this.position.file+1][this.position.rank+1].colour !== this.colour) {
             moves.push([this.position.file+1, this.position.rank+1])
         }
-        if (board[this.position.file-1][this.position.rank-1] !== undefined) {
+        if (board[this.position.file-1][this.position.rank-1] !== undefined
+            && board[this.position.file-1][this.position.rank-1].colour !== this.colour) {
             moves.push([this.position.file-1, this.position.rank-1])
         }
 
@@ -61,7 +63,7 @@ function initialiseBoard() {
                 rankArray.push({piece: 'piece', colour: colour});
                 html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
             } else if (rank === 1 || rank === 6) {
-                rankArray.push({piece: 'pawn', colour: colour});
+                rankArray.push(new Pawn(colour, [file, rank]));
                 html = `<div class="square pawn-${colour}" data-file="${file}" data-rank="${rank}">pawn</div>`
             } else {
                 rankArray.push();
@@ -72,4 +74,6 @@ function initialiseBoard() {
         }
         board.push(rankArray);
     }
+
+    return board;
 }

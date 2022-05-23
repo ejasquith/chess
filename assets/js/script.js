@@ -79,6 +79,7 @@ function initialiseBoard() {
         }
         board.push(rankArray);
     }
+    board.reverse();
     return board;
 }
 
@@ -87,6 +88,6 @@ function squareClickHandler(event) {
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
     console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
-    let piece = board[7-rank][file];
+    let piece = board[rank][file];
     console.log(piece);
 }

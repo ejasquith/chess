@@ -75,7 +75,8 @@ function initialiseBoard() {
             if (rank === 0 || rank === 7) {
                 // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                html = `<div class="square-container"><div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div></div>`;
+                // html = `<div class="square-container"><div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div></div>`;
+                html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`;
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);

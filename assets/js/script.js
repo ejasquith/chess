@@ -20,16 +20,18 @@ class Piece {
 class Pawn extends Piece {
     getValidMoves() {
         let moves = [];
+        // undefined means either array location is empty (ie no piece), or doesn't exist
         // do need to check for out of bounds index here
-        if (board[this.position.rank+1][this.position.file] === undefined) {
+        if (this.position.rank + 1 <= 7 && board[this.position.rank+1][this.position.file] === undefined) {
             moves.push([this.position.rank+1, this.position.file]);
         }
+        // no need to check index here as it can only ever be true when pawn is on second/seventh rank
         if (!this.hasMoved && board[this.position.rank+2][this.position.file] === undefined) {
             moves.push([this.position.rank+2, this.position.file]);
         }
         // doesn't need to check if index out of bounds, because out of bounds values return undefined
-        // would return error when checking piece colour, if the condition didn't fail and skip over second condition
-        // when returned undefined
+        // would return error when checking piece colour, if the condition didn't fail and
+        // skip over second condition when returned undefined
         if (board[this.position.rank+1][this.position.file+1] !== undefined 
             && board[this.position.rank+1][this.position.file+1].colour !== this.colour) {
             console.log(board[this.position.rank+1][this.position.file+1])

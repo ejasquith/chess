@@ -52,13 +52,6 @@ let board;
 
 document.addEventListener('DOMContentLoaded', function() {
     board = initialiseBoard();
-    // document.addEventListener('click', function() {
-    //     for (let square of document.getElementsByClassName('square')) {
-    //         if (square.style['background-color'] !== 'white') {
-    //             square.style['background-color'] = 'white';
-    //         }
-    //     }
-    // })
     for (let square of document.getElementsByClassName('square')) {
         square.addEventListener('click', squareClickHandler);
     }
@@ -102,7 +95,9 @@ function initialiseBoard() {
 
 function displayValidMoves(moves) {
     let squares = document.getElementsByClassName('square');
-    console.log(squares);
+    for (let square of squares) {
+        square.parentElement.style['background-color'] = 'rgba(0,0,0,0)';
+    }
     for (let square of squares) {
         let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
         // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical

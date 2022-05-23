@@ -94,8 +94,28 @@ function initialiseBoard() {
             //let html = '';
             let node = document.createElement('div');
             if (rank === 0 || rank === 7) {
-                // switch block for piece type
-                rankArray.push({piece: 'piece', colour: colour});
+                let piece;
+                switch (file) {
+                    case (0 || 7):
+                        //rook
+                        break;
+                    case (1 || 6):
+                        //knight
+                        break;
+                    case (2 || 5):
+                        //bishop
+                        break;
+                    case 3:
+                        //queen
+                        break;
+                    case 4:
+                        //king
+                        break;
+                    default:
+                        // will never be run, but for completeness throw an error
+                        throw 'Error: file index out of bounds';
+                }
+                rankArray.push(piece);
                 node.classList.add('square', `piece-${colour}`);
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);

@@ -88,6 +88,7 @@ function initialiseBoard() {
                 node.classList.add('square', `pawn-${colour}`);
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
+                node.style.backgroundImage = `url(../assets/images/pawn-${colour}.png)`;
             } else {
                 rankArray.push();
                 //html = `<div class="square-container"><div class="square" data-file="${file}" data-rank="${rank}"></div></div>`;

@@ -92,33 +92,39 @@ function initialiseBoard() {
 
         for (let file = 0; file < 8; file++) {
             //let html = '';
+            // let container = document.createElement('div');
+            // container.classList.add('square-container');
             let node = document.createElement('div');
             if (rank === 0 || rank === 7) {
                 let piece;
                 switch (file) {
-                    case (0 || 7):
-                        //rook
+                    case 0:
+                    case 7:
+                        piece = new Rook(colour, {file: file, rank: rank});
                         break;
-                    case (1 || 6):
-                        //knight
+                    case 1:
+                    case 6:
+                        piece = new Knight(colour, {file: file, rank: rank});
                         break;
-                    case (2 || 5):
-                        //bishop
+                    case 2:
+                    case 5:
+                        piece = new Bishop(colour, {file: file, rank: rank});
                         break;
                     case 3:
-                        //queen
+                        piece = new Queen(colour, {file: file, rank: rank});
                         break;
                     case 4:
-                        //king
+                        piece = new King(colour, {file: file, rank: rank});
                         break;
                     default:
                         // will never be run, but for completeness throw an error
                         throw 'Error: file index out of bounds';
                 }
                 rankArray.push(piece);
-                node.classList.add('square', `piece-${colour}`);
+                node.classList.add('square', `${piece.constructor.name.toLowerCase()}-${colour}`);
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
+                node.style.backgroundImage = `url(../assets/images/${piece.constructor.name.toLowerCase()}-${colour}.png)`
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);
@@ -139,6 +145,7 @@ function initialiseBoard() {
                 node.style.backgroundColor = '#333';
             }   
 
+            // container.appendChild(node);
             document.getElementById('board').appendChild(node);
         }
         board.push(rankArray);
@@ -151,14 +158,19 @@ function initialiseBoard() {
 function displayValidMoves(moves) {
     let squares = document.getElementsByClassName('square');
     for (let square of squares) {
-        square.parentElement.style['background-color'] = 'rgba(0,0,0,0)';
+        let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
+        if (squareCoords[0] % 2 === 0 ^ squareCoords[1] % 2 === 0) {
+            square.style.backgroundColor = 'white';
+        } else {
+            square.style.backgroundColor = '#333';
+        }   
     }
     for (let square of squares) {
         let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
         // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical
         for (let move of moves) {
             if (squareCoords[0] === move[0] && squareCoords[1] === move[1]) {
-                square.parentElement.style['background-color'] = 'rgba(255, 0, 0, 0.5)';
+                square.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
             }
         }
     }

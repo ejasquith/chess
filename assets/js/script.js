@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function getCoords(file, rank) {
+function getAlgebraicCoords(file, rank) {
     const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     return letters[file] + (rank+1);
 }

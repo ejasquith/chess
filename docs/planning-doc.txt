@@ -1,10 +1,10 @@
 game board - 2d array - accessed via indices, first being letters second being numbers ([file][rank]) eg board[4][3] = e4
 
-function getCoords(num1, num2) {
+function getAlgebraicCoords(num1, num2) {
   let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
   return letters[num1] + (num2+1);
 }
-console.log(getCoords(4,3)); // 'e4'
+console.log(getAlgebraicCoords(4,3)); // 'e4'
 
 array of Square objects? js not class based - prototypes?
 

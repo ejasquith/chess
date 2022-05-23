@@ -64,7 +64,7 @@ class King extends Piece {
 }
 
 class Queen extends Piece {
-    
+
 }
 
 // global variable - need to figure out a solution without this
@@ -96,22 +96,18 @@ function initialiseBoard() {
             if (rank === 0 || rank === 7) {
                 // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                // html = `<div class="square-container"><div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div></div>`;
-                //html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`;
                 node.classList.add('square', `piece-${colour}`);
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);
-                //html = `<div class="square-container"><div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div></div>`;
                 node.classList.add('square', `pawn-${colour}`);
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
                 node.style.backgroundImage = `url(../assets/images/pawn-${colour}.png)`;
             } else {
                 rankArray.push();
-                //html = `<div class="square-container"><div class="square" data-file="${file}" data-rank="${rank}"></div></div>`;
                 node.classList.add('square');
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
@@ -124,8 +120,6 @@ function initialiseBoard() {
             }   
 
             document.getElementById('board').appendChild(node);
-
-            //document.getElementById('board').innerHTML += html;
         }
         board.push(rankArray);
     }

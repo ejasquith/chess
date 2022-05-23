@@ -40,7 +40,9 @@ class Pawn extends Piece {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+    for (let square of document.getElementsByClassName('square')) {
+        square.addEventListener('click', squareClickHandler);
+    }
     initialiseBoard();
 });
 
@@ -63,8 +65,8 @@ function initialiseBoard() {
                 rankArray.push({piece: 'piece', colour: colour});
                 html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
             } else if (rank === 1 || rank === 6) {
-                rankArray.push(new Pawn(colour, [file, rank]));
-                html = `<div class="square pawn-${colour}" data-file="${file}" data-rank="${rank}">pawn</div>`
+                rankArray.push(new Pawn(colour, {file: file, rank: rank}));
+                html = `<div class="square pawn-${colour}" data-file="${file}" data-rank="${rank}">pawn ${colour}</div>`
             } else {
                 rankArray.push();
                 html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`

@@ -52,6 +52,13 @@ let board;
 
 document.addEventListener('DOMContentLoaded', function() {
     board = initialiseBoard();
+    // document.addEventListener('click', function() {
+    //     for (let square of document.getElementsByClassName('square')) {
+    //         if (square.style['background-color'] !== 'white') {
+    //             square.style['background-color'] = 'white';
+    //         }
+    //     }
+    // })
     for (let square of document.getElementsByClassName('square')) {
         square.addEventListener('click', squareClickHandler);
     }
@@ -75,14 +82,14 @@ function initialiseBoard() {
             if (rank === 0 || rank === 7) {
                 // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`;
+                html = `<div class="square-container"><div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div></div>`;
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);
-                html = `<div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div>`;
+                html = `<div class="square-container"><div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div></div>`;
             } else {
                 rankArray.push();
-                html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`;
+                html = `<div class="square-container"><div class="square" data-file="${file}" data-rank="${rank}"></div></div>`;
             }
             document.getElementById('board').innerHTML += html;
         }
@@ -101,7 +108,7 @@ function displayValidMoves(moves) {
         // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical
         for (let move of moves) {
             if (squareCoords[0] === move[0] && squareCoords[1] === move[1]) {
-                square.style['background-color'] = 'red';
+                square.parentElement.style['background-color'] = 'rgba(255, 0, 0, 0.5)';
             }
         }
     }

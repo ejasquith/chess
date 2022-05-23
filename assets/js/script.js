@@ -35,18 +35,18 @@ class Pawn extends Piece {
         // skip over second condition when returned undefined
         if (board[this.position.rank+1][this.position.file+1] !== undefined 
             && board[this.position.rank+1][this.position.file+1].colour !== this.colour) {
-            console.log(board[this.position.rank+1][this.position.file+1])
-            moves.push([this.position.rank+1, this.position.file+1])
+                moves.push([this.position.rank+1, this.position.file+1])
         }
         if (board[this.position.rank-1][this.position.file-1] !== undefined
             && board[this.position.rank-1][this.position.file-1].colour !== this.colour) {
-            moves.push([this.position.rank-1, this.position.file-1])
+                moves.push([this.position.rank-1, this.position.file-1])
         }
 
         return moves;
     }
 }
 
+// global variable - need to figure out a solution without this
 let board;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -87,6 +87,7 @@ function initialiseBoard() {
         }
         board.push(rankArray);
     }
+    // reverse order of ranks in board - rank arrays themselves untouched
     board.reverse();
     return board;
 }
@@ -96,16 +97,12 @@ function displayValidMoves(moves) {
     console.log(squares);
     for (let square of squares) {
         let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
+        // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical
         for (let move of moves) {
             if (squareCoords[0] === move[0] && squareCoords[1] === move[1]) {
-                console.log('move found');
                 square.style['background-color'] = 'red';
             }
         }
-        // if (moves.includes([parseInt(squares[i].getAttribute('data-rank')), parseInt(squares[i].getAttribute('data-file'))])) {
-        //     console.log('move found');
-        //     square.style['background-color'] = 'red';
-        // }
     }
 }
 

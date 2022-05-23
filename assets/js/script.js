@@ -39,8 +39,10 @@ class Pawn extends Piece {
     }
 }
 
+let board;
+
 document.addEventListener('DOMContentLoaded', function() {
-    initialiseBoard();
+    board = initialiseBoard();
     for (let square of document.getElementsByClassName('square')) {
         square.addEventListener('click', squareClickHandler);
     }
@@ -85,4 +87,6 @@ function squareClickHandler(event) {
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
     console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
+    let piece = board[file][rank];
+    console.log(piece);
 }

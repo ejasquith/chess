@@ -84,10 +84,15 @@ function initialiseBoard() {
 }
 
 function squareClickHandler(event) {
-    console.log('square handler called');
+    // console.log('square handler called');
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
-    console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
+    // console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
     let piece = board[rank][file];
-    console.log(piece);
+    // console.log(piece);
+    console.log(piece instanceof Pawn);
+    if (piece instanceof Pawn) {
+        console.log(piece);
+        console.log(piece.getValidMoves());
+    }
 }

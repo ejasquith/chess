@@ -91,9 +91,6 @@ function initialiseBoard() {
         let colour = (rank <= 1) ? 'white' : 'black';
 
         for (let file = 0; file < 8; file++) {
-            //let html = '';
-            // let container = document.createElement('div');
-            // container.classList.add('square-container');
             let node = document.createElement('div');
             if (rank === 0 || rank === 7) {
                 let piece;
@@ -121,14 +118,14 @@ function initialiseBoard() {
                         throw 'Error: file index out of bounds';
                 }
                 rankArray.push(piece);
-                node.classList.add('square', `${piece.constructor.name.toLowerCase()}-${colour}`);
+                node.classList.add('square');
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
                 node.style.backgroundImage = `url(../assets/images/${piece.constructor.name.toLowerCase()}-${colour}.png)`
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);
-                node.classList.add('square', `pawn-${colour}`);
+                node.classList.add('square');
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
                 node.style.backgroundImage = `url(../assets/images/pawn-${colour}.png)`;

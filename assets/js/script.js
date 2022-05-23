@@ -55,31 +55,31 @@ function getCoords(file, rank) {
 
 function initialiseBoard() {
     let board = [];
+    let html = [];
 
-    for (let rank = 0; rank < 8; rank++) {
+    for (let rank = 7; rank >= 0; rank--) {
         let rankArray = [];
         let colour = (rank <= 1) ? 'white' : 'black';
 
         for (let file = 0; file < 8; file++) {
-            let html='';
             if (rank === 0 || rank === 7) {
                 // switch block for piece type
                 rankArray.push({piece: 'piece', colour: colour});
-                html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
+                html.push(`<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`);
             } else if (rank === 1 || rank === 6) {
                 let pawn = new Pawn(colour, {file: file, rank: rank});
                 rankArray.push(pawn);
-                html = `<div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div>`
+                html.push(`<div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div>`);
             } else {
                 rankArray.push();
-                html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`
+                html.push(`<div class="square" data-file="${file}" data-rank="${rank}"></div>`);
             }
-
-            document.getElementById('board').innerHTML += html;
         }
         board.push(rankArray);
     }
-
+    for (let node of html) {
+        document.getElementById('board').innerHTML += node;
+    }
     return board;
 }
 
@@ -88,6 +88,6 @@ function squareClickHandler(event) {
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
     console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
-    let piece = board[rank][file];
+    let piece = board[7-rank][file];
     console.log(piece);
 }

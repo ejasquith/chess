@@ -20,26 +20,27 @@ class Piece {
 class Pawn extends Piece {
     getValidMoves() {
         let moves = [];
+        let offset = this.colour === 'white' ? 1 : -1;
         // undefined means either array location is empty (ie no piece), or doesn't exist
         // do need to check for out of bounds index here
         // actually probably don't - if pawn is on 8th/1st rank, that means it has promoted and is no longer pawn
-        if (this.position.rank + 1 <= 7 && board[this.position.rank+1][this.position.file] === undefined) {
-            moves.push([this.position.rank+1, this.position.file]);
+        if (this.position.rank + offset <= 7 && board[this.position.rank+offset][this.position.file] === undefined) {
+            moves.push([this.position.rank+offset, this.position.file]);
         }
         // no need to check index here as it can only ever be true when pawn is on second/seventh rank
-        if (!this.hasMoved && board[this.position.rank+2][this.position.file] === undefined) {
-            moves.push([this.position.rank+2, this.position.file]);
+        if (!this.hasMoved && board[this.position.rank+2*offset][this.position.file] === undefined) {
+            moves.push([this.position.rank+2*offset, this.position.file]);
         }
         // doesn't need to check if index out of bounds, because out of bounds values return undefined
         // would return error when checking piece colour, if the condition didn't fail and
         // skip over second condition when returned undefined
-        if (board[this.position.rank+1][this.position.file+1] !== undefined 
-            && board[this.position.rank+1][this.position.file+1].colour !== this.colour) {
-                moves.push([this.position.rank+1, this.position.file+1])
+        if (board[this.position.rank+offset][this.position.file+offset] !== undefined 
+            && board[this.position.rank+offset][this.position.file+offset].colour !== this.colour) {
+                moves.push([this.position.rank+offset, this.position.file+offset])
         }
-        if (board[this.position.rank-1][this.position.file-1] !== undefined
-            && board[this.position.rank-1][this.position.file-1].colour !== this.colour) {
-                moves.push([this.position.rank-1, this.position.file-1])
+        if (board[this.position.rank-offset][this.position.file-offset] !== undefined
+            && board[this.position.rank-offset][this.position.file-offset].colour !== this.colour) {
+                moves.push([this.position.rank-offset, this.position.file-offset])
         }
 
         return moves;

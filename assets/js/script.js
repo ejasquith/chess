@@ -1,3 +1,42 @@
+class Piece {
+    constructor(colour, position) {
+        this.colour = colour;
+        this.position = position;
+        this.hasMoved = false;
+    }
+    
+    getValidMoves() {
+
+    }
+    move(file, rank) {
+        if (this.getValidMoves().includes([file, rank])) {
+            this.position.file = file;
+            this.position.rank = rank;
+            // edit html
+        }
+    }
+}
+
+class Pawn extends Piece {
+    getValidMoves() {
+        let moves = [];
+        if (board[this.position.file][this.position.rank+1] === undefined) {
+            moves.push([this.position.file, this.position.rank+1]);
+        }
+        if (!this.hasMoved && board[this.position.file][this.position.rank+2] === undefined) {
+            moves.push([this.position.file, this.position.rank+2]);
+        }
+        if (board[this.position.file+1][this.position.rank+1] !== undefined) {
+            moves.push([this.position.file+1, this.position.rank+1])
+        }
+        if (board[this.position.file-1][this.position.rank-1] !== undefined) {
+            moves.push([this.position.file-1, this.position.rank-1])
+        }
+
+        return moves;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     
     initialiseBoard();

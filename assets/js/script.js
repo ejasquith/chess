@@ -67,8 +67,9 @@ function initialiseBoard() {
                 rankArray.push({piece: 'piece', colour: colour});
                 html = `<div class="square piece-${colour}" data-file="${file}" data-rank="${rank}">piece</div>`
             } else if (rank === 1 || rank === 6) {
-                rankArray.push(new Pawn(colour, {file: file, rank: rank}));
-                html = `<div class="square pawn-${colour}" data-file="${file}" data-rank="${rank}">pawn ${colour}</div>`
+                let pawn = new Pawn(colour, {file: file, rank: rank});
+                rankArray.push(pawn);
+                html = `<div class="square pawn-${pawn.colour}" data-file="${pawn.position.file}" data-rank="${pawn.position.rank}">pawn ${colour}</div>`
             } else {
                 rankArray.push();
                 html = `<div class="square" data-file="${file}" data-rank="${rank}"></div>`
@@ -87,6 +88,6 @@ function squareClickHandler(event) {
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
     console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
-    let piece = board[file][rank];
+    let piece = board[rank][file];
     console.log(piece);
 }

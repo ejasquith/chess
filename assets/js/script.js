@@ -20,19 +20,20 @@ class Piece {
 class Pawn extends Piece {
     getValidMoves() {
         let moves = [];
-        if (board[this.position.file][this.position.rank+1] === undefined) {
-            moves.push([this.position.file, this.position.rank+1]);
+        if (board[this.position.rank][this.position.file+1] === undefined) {
+            moves.push([this.position.rank, this.position.file+1]);
         }
-        if (!this.hasMoved && board[this.position.file][this.position.rank+2] === undefined) {
-            moves.push([this.position.file, this.position.rank+2]);
+        if (!this.hasMoved && board[this.position.rank][this.position.file+2] === undefined) {
+            moves.push([this.position.rank+2, this.position.file]);
         }
-        if (board[this.position.file+1][this.position.rank+1] !== undefined 
-            && board[this.position.file+1][this.position.rank+1].colour !== this.colour) {
-            moves.push([this.position.file+1, this.position.rank+1])
+        if (board[this.position.rank+1][this.position.file+1] !== undefined 
+            && board[this.position.rank+1][this.position.file+1].colour !== this.colour) {
+            console.log(board[this.position.rank+1][this.position.file+1])
+            moves.push([this.position.rank+1, this.position.file+1])
         }
-        if (board[this.position.file-1][this.position.rank-1] !== undefined
-            && board[this.position.file-1][this.position.rank-1].colour !== this.colour) {
-            moves.push([this.position.file-1, this.position.rank-1])
+        if (board[this.position.rank-1][this.position.file-1] !== undefined
+            && board[this.position.rank-1][this.position.file-1].colour !== this.colour) {
+            moves.push([this.position.rank-1, this.position.file-1])
         }
 
         return moves;

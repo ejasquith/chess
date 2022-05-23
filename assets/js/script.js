@@ -22,6 +22,7 @@ class Pawn extends Piece {
         let moves = [];
         // undefined means either array location is empty (ie no piece), or doesn't exist
         // do need to check for out of bounds index here
+        // actually probably don't - if pawn is on 8th/1st rank, that means it has promoted and is no longer pawn
         if (this.position.rank + 1 <= 7 && board[this.position.rank+1][this.position.file] === undefined) {
             moves.push([this.position.rank+1, this.position.file]);
         }
@@ -90,16 +91,29 @@ function initialiseBoard() {
     return board;
 }
 
+function displayValidMoves(moves) {
+    let squares = document.getElementsByClassName('square');
+    console.log(squares);
+    for (let square of squares) {
+        let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
+        for (let move of moves) {
+            if (squareCoords[0] === move[0] && squareCoords[1] === move[1]) {
+                console.log('move found');
+                square.style['background-color'] = 'red';
+            }
+        }
+        // if (moves.includes([parseInt(squares[i].getAttribute('data-rank')), parseInt(squares[i].getAttribute('data-file'))])) {
+        //     console.log('move found');
+        //     square.style['background-color'] = 'red';
+        // }
+    }
+}
+
 function squareClickHandler(event) {
-    // console.log('square handler called');
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
-    // console.log(`You clicked ${getCoords(parseInt(file), parseInt(rank))}`);
     let piece = board[rank][file];
-    // console.log(piece);
-    console.log(piece instanceof Pawn);
     if (piece instanceof Pawn) {
-        console.log(piece);
-        console.log(piece.getValidMoves());
+        displayValidMoves(piece.getValidMoves());
     }
 }

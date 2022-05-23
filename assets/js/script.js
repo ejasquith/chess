@@ -47,6 +47,26 @@ class Pawn extends Piece {
     }
 }
 
+class Rook extends Piece {
+
+}
+
+class Knight extends Piece {
+
+}
+
+class Bishop extends Piece {
+
+}
+
+class King extends Piece {
+
+}
+
+class Queen extends Piece {
+    
+}
+
 // global variable - need to figure out a solution without this
 let board;
 

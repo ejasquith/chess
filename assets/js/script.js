@@ -192,7 +192,46 @@ class Bishop extends Piece {
 
 class King extends Piece {
     getValidMoves() {
+        let moves = [];
+        let rank = this.position.rank;
+        let file = this.position.rank;
 
+        //ADD LOGIC FOR CHECKS
+        if (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colour) {
+            moves.push([rank + 1, file]);
+        }
+        if (board[rank + 1][file + 1] === undefined || board[rank + 1][file + 1].colour !== this.colour) {
+            moves.push([rank + 1, file + 1]);
+        }
+        if (board[rank + 1][file - 1] === undefined || board[rank + 1][file - 1].colour !== this.colour) {
+            moves.push([rank + 1, file - 1]);
+        }
+        if (board[rank - 1][file] === undefined || board[rank - 1][file].colour !== this.colour) {
+            moves.push([rank - 1, file]);
+        }
+        if (board[rank - 1][file + 1] === undefined || board[rank - 1][file + 1].colour !== this.colour) {
+            moves.push([rank - 1, file + 1]);
+        }
+        if (board[rank - 1][file - 1] === undefined || board[rank - 1][file - 1].colour !== this.colour) {
+            moves.push([rank - 1, file - 1]);
+        }
+        if (board[rank][file + 1] === undefined || board[rank][file + 1].colour !== this.colour) {
+            moves.push([rank, file + 1]);
+        }
+        if (board[rank][file - 1] === undefined || board[rank][file - 1].colour !== this.colour) {
+            moves.push([rank, file - 1]);
+        }
+
+        if (!this.hasMoved) {
+            if (board[rank][0] instanceof Rook && !board[rank][0].hasMoved) {
+                moves.push([rank, file + 2]);
+            }
+            if (board[rank][7] instanceof Rook && !board[rank][7].hasMoved) {
+                moves.push([rank, file + 2]);
+            }
+        }
+
+        return moves;
     }
 }
 

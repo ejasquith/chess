@@ -48,7 +48,52 @@ class Pawn extends Piece {
 }
 
 class Rook extends Piece {
+    getValidMoves() {
+        let moves = [];
+        let rank = this.position.rank;
+        let file = this.position.file;
+        for (rank; rank <= 7; rank++) {
+            if (board[rank][file] !== undefined) {
+                if (board[rank][file].colour !== this.colour) {
+                    moves.push([rank][file]);
+                }
+                break;
+            } else {
+                moves.push([rank][file]);
+            }
+        }
+        for (rank; rank >= 0; rank--) {
+            if (board[rank][file] !== undefined) {
+                if (board[rank][file].colour !== this.colour) {
+                    moves.push([rank][file]);
+                }
+                break;
+            } else {
+                moves.push([rank][file]);
+            }
+        }
 
+        for (file; file <= 7; file++) {
+            if (board[rank][file] !== undefined) {
+                if (board[rank][file].colour !== this.colour) {
+                    moves.push([rank][file]);
+                }
+                break;
+            } else {
+                moves.push([rank][file]);
+            }
+        }
+        for (file; file >= 0; file--) {
+            if (board[rank][file] !== undefined) {
+                if (board[rank][file].colour !== this.colour) {
+                    moves.push([rank][file]);
+                }
+                break;
+            } else {
+                moves.push([rank][file]);
+            }
+        }
+    }
 }
 
 class Knight extends Piece {

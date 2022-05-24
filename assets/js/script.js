@@ -50,7 +50,11 @@ function displayValidMoves(moves) {
         // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical
         for (let move of moves) {
             if (squareCoords[0] === move[0] && squareCoords[1] === move[1]) {
-                square.style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+                if (squareCoords[0] % 2 === 0 ^ squareCoords[1] % 2 === 0) {
+                    square.style.backgroundColor = '#df7561';
+                } else {
+                    square.style.backgroundColor = '#d26652';
+                } 
             }
         }
     }

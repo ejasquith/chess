@@ -8,7 +8,6 @@ import King from './king.js';
 export default class Board {
     constructor() {
         this.array = [];
-        this.ranks = [];
         this.initialiseBoard();
     }
 

@@ -1,4 +1,6 @@
 import Piece from './piece.js';
+import Rook from './rook.js';
+
 export default class King extends Piece {
     getValidMoves(board) {
         let moves = [];

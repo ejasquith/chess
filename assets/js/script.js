@@ -12,7 +12,7 @@ class Piece {
         if (this.getValidMoves().includes([file, rank])) {
             this.position.file = file;
             this.position.rank = rank;
-            // edit html
+            // edit html, deal with captures
         }
     }
 }
@@ -42,7 +42,6 @@ class Pawn extends Piece {
             && board[this.position.rank-sign][this.position.file-sign].colour !== this.colour) {
                 moves.push([this.position.rank-sign, this.position.file-sign])
         }
-
         return moves;
     }
 }
@@ -50,47 +49,45 @@ class Pawn extends Piece {
 class Rook extends Piece {
     getValidMoves() {
         let moves = [];
-        // let rank = this.position.rank;
-        // let file = this.position.file;
         for (let rank = this.position.rank + 1; rank <= 7; rank++) {
             if (board[rank][this.position.file] !== undefined) {
                 if (board[rank][this.position.file].colour !== this.colour) {
-                    moves.push([rank][this.position.file]);
+                    moves.push([rank, this.position.file]);
                 }
                 break;
             } else {
-                moves.push([rank][this.position.file]);
+                moves.push([rank, this.position.file]);
             }
         }
         for (let rank = this.position.rank - 1; rank >= 0; rank--) {
             if (board[rank][this.position.file] !== undefined) {
                 if (board[rank][this.position.file].colour !== this.colour) {
-                    moves.push([rank][this.position.file]);
+                    moves.push([rank, this.position.file]);
                 }
                 break;
             } else {
-                moves.push([rank][this.position.file]);
+                moves.push([rank, this.position.file]);
             }
         }
 
         for (let file = this.position.file + 1; file <= 7; file++) {
             if (board[this.position.rank][file] !== undefined) {
                 if (board[this.position.rank][file].colour !== this.colour) {
-                    moves.push([this.position.rank][file]);
+                    moves.push([this.position.rank, file]);
                 }
                 break;
             } else {
-                moves.push([this.position.rank][file]);
+                moves.push([this.position.rank, file]);
             }
         }
         for (let file = this.position.file - 1; file >= 0; file--) {
             if (board[this.position.rank][file] !== undefined) {
                 if (board[this.position.rank][file].colour !== this.colour) {
-                    moves.push([this.position.rank][file]);
+                    moves.push([this.position.rank, file]);
                 }
                 break;
             } else {
-                moves.push([this.position.rank][file]);
+                moves.push([this.position.rank, file]);
             }
         }
 
@@ -99,7 +96,32 @@ class Rook extends Piece {
 }
 
 class Knight extends Piece {
+    getValidMoves() {
+        let rank = this.position.rank;
+        let file = this.position.file;
+        let moves = [];
 
+        //how far the knight can move in x or y
+        let offsets = [-2, -1, 1, 2];
+
+        for (let offset of offsets) {
+            for (let offset2 of offsets) {
+                // must move 1 in one direction and 2 in other
+                if (Math.abs(offset) === Math.abs(offset2)) {
+                    continue;
+                } else if (!((rank + offset > 7) || (rank + offset < 0) || (file + offset2 > 7) || (file + offset2 < 0))) {
+                    if (board[rank + offset][file + offset2] !== undefined) {
+                        if (board[rank + offset][file + offset2].colour !== this.colour) {
+                            moves.push([rank + offset, file + offset2]);
+                        }
+                    } else {
+                        moves.push([rank + offset, file + offset2]);
+                    }
+                }
+            }
+        }
+        return moves;
+    }
 }
 
 class Bishop extends Piece {
@@ -221,7 +243,7 @@ function squareClickHandler(event) {
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
     let piece = board[rank][file];
-    if (piece instanceof Pawn) {
+    if (piece !== undefined) {
         displayValidMoves(piece.getValidMoves());
     }
 }

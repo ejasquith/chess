@@ -93,6 +93,8 @@ class Rook extends Piece {
                 moves.push([rank][file]);
             }
         }
+
+        return moves;
     }
 }
 

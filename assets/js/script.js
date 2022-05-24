@@ -197,28 +197,36 @@ class King extends Piece {
         let file = this.position.rank;
 
         //ADD LOGIC FOR CHECKS
-        if (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colour) {
+        if (rank + 1 <= 7 && 
+            (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colou)) {
             moves.push([rank + 1, file]);
         }
-        if (board[rank + 1][file + 1] === undefined || board[rank + 1][file + 1].colour !== this.colour) {
+        if (rank + 1 <= 7 && file + 1 <= 7 && 
+            (board[rank + 1][file + 1] === undefined || board[rank + 1][file + 1].colour !== this.colour)) {
             moves.push([rank + 1, file + 1]);
         }
-        if (board[rank + 1][file - 1] === undefined || board[rank + 1][file - 1].colour !== this.colour) {
+        if (rank + 1 <= 7 && file - 1 >= 0 &&
+            (board[rank + 1][file - 1] === undefined || board[rank + 1][file - 1].colour !== this.colour)) {
             moves.push([rank + 1, file - 1]);
         }
-        if (board[rank - 1][file] === undefined || board[rank - 1][file].colour !== this.colour) {
+        if (rank - 1 >= 0 &&
+            (board[rank - 1][file] === undefined || board[rank - 1][file].colour !== this.colour)) {
             moves.push([rank - 1, file]);
         }
-        if (board[rank - 1][file + 1] === undefined || board[rank - 1][file + 1].colour !== this.colour) {
+        if (rank - 1 >= 0 && file + 1 <= 7 &&
+            (board[rank - 1][file + 1] === undefined || board[rank - 1][file + 1].colour !== this.colour)) {
             moves.push([rank - 1, file + 1]);
         }
-        if (board[rank - 1][file - 1] === undefined || board[rank - 1][file - 1].colour !== this.colour) {
+        if (rank - 1 >= 0 && file - 1 >= 0 &&
+            (board[rank - 1][file - 1] === undefined || board[rank - 1][file - 1].colour !== this.colour)) {
             moves.push([rank - 1, file - 1]);
         }
-        if (board[rank][file + 1] === undefined || board[rank][file + 1].colour !== this.colour) {
+        if (file + 1 <= 7 &&
+            (board[rank][file + 1] === undefined || board[rank][file + 1].colour !== this.colour)) {
             moves.push([rank, file + 1]);
         }
-        if (board[rank][file - 1] === undefined || board[rank][file - 1].colour !== this.colour) {
+        if ( file - 1 >= 0 &&
+            (board[rank][file - 1] === undefined || board[rank][file - 1].colour !== this.colour)) {
             moves.push([rank, file - 1]);
         }
 

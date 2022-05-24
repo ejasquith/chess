@@ -186,11 +186,14 @@ class Bishop extends Piece {
                 moves.push([rank, file]);
             }
         }
+        return moves;
     }
 }
 
 class King extends Piece {
+    getValidMoves() {
 
+    }
 }
 
 class Queen extends Piece {

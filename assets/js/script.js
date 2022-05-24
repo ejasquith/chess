@@ -1,9 +1,3 @@
-import Pawn from './pawn.js';
-import Rook from './rook.js';
-import Knight from './knight.js';
-import Bishop from './bishop.js';
-import Queen from './queen.js';
-import King from './king.js';
 import Board from './board.js';
 
 // global variable - need to figure out a solution without this

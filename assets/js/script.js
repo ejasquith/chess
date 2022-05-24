@@ -26,9 +26,9 @@ function initialiseHTML() {
                 node.setAttribute('data-file', file);
                 node.setAttribute('data-rank', rank);
                 if (rank % 2 === 0 ^ file % 2 === 0) {
-                    node.style.backgroundColor = 'white';
+                    node.style.backgroundColor = '#ebd7b2';
                 } else {
-                    node.style.backgroundColor = '#333';
+                    node.style.backgroundColor = '#ac8561';
                 }   
                 if (boardTemp[rank][file] !== undefined) {
                     node.style.backgroundImage = `url(../assets/images/${boardTemp[rank][file].constructor.name.toLowerCase()}-${boardTemp[rank][file].colour}.png)`;
@@ -43,9 +43,9 @@ function displayValidMoves(moves) {
     for (let square of squares) {
         let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
         if (squareCoords[0] % 2 === 0 ^ squareCoords[1] % 2 === 0) {
-            square.style.backgroundColor = 'white';
+            square.style.backgroundColor = '#ebd7b2';
         } else {
-            square.style.backgroundColor = '#333';
+            square.style.backgroundColor = '#ac8561';
         }   
         // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical
         for (let move of moves) {

@@ -194,11 +194,11 @@ class King extends Piece {
     getValidMoves() {
         let moves = [];
         let rank = this.position.rank;
-        let file = this.position.rank;
+        let file = this.position.file;
 
         //ADD LOGIC FOR CHECKS
         if (rank + 1 <= 7 && 
-            (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colou)) {
+            (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colour)) {
             moves.push([rank + 1, file]);
         }
         if (rank + 1 <= 7 && file + 1 <= 7 && 

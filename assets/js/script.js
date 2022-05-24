@@ -225,17 +225,33 @@ class King extends Piece {
             (board[rank][file + 1] === undefined || board[rank][file + 1].colour !== this.colour)) {
             moves.push([rank, file + 1]);
         }
-        if ( file - 1 >= 0 &&
+        if (file - 1 >= 0 &&
             (board[rank][file - 1] === undefined || board[rank][file - 1].colour !== this.colour)) {
             moves.push([rank, file - 1]);
         }
 
         if (!this.hasMoved) {
             if (board[rank][0] instanceof Rook && !board[rank][0].hasMoved) {
-                moves.push([rank, file - 2]);
+                let flag = false;
+                for (let square of board[rank].slice(1,4)) {
+                    if (square !== undefined) {
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    moves.push([rank, file - 2]);
+                }
             }
             if (board[rank][7] instanceof Rook && !board[rank][7].hasMoved) {
-                moves.push([rank, file + 2]);
+                let flag = false;
+                for (let square of board[rank].slice(5,7)) {
+                    if (square !== undefined) {
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    moves.push([rank, file + 2]);
+                }
             }
         }
 

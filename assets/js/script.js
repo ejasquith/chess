@@ -224,7 +224,7 @@ class King extends Piece {
 
         if (!this.hasMoved) {
             if (board[rank][0] instanceof Rook && !board[rank][0].hasMoved) {
-                moves.push([rank, file + 2]);
+                moves.push([rank, file - 2]);
             }
             if (board[rank][7] instanceof Rook && !board[rank][7].hasMoved) {
                 moves.push([rank, file + 2]);

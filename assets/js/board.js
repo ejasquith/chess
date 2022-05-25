@@ -9,6 +9,7 @@ export default class Board {
     static instance = undefined;
     constructor() {
         this.array = [];
+        this.selectedPiece = undefined;
         this.initialiseBoard();
     }
 
@@ -61,5 +62,10 @@ export default class Board {
             this.array.push(rankArray);
         }
         console.log(this.array);
+    }
+
+    movePiece(piece, oldCoords, newCoords) {
+        this.array[oldCoords[0]].splice(oldCoords[1], 1, undefined);
+        this.array[newCoords[0]][newCoords[1]] = piece;
     }
 }

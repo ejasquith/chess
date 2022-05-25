@@ -1,11 +1,8 @@
 import Board from './board.js';
 
-// global variable - need to figure out a solution without this
-let board;
-
 document.addEventListener('DOMContentLoaded', function() {
-    board = new Board().array;
-    initialiseHTML();
+    let board = Board.getInstance().array;
+    initialiseHTML(board);
     for (let square of document.getElementsByClassName('square')) {
         square.addEventListener('click', squareClickHandler);
     }
@@ -16,9 +13,8 @@ function getAlgebraicCoords(file, rank) {
     return letters[file] + (rank+1);
 }
 
-function initialiseHTML() {
+function initialiseHTML(board) {
     let boardTemp = board.reverse();
-    console.log(boardTemp);
     for (let rank = 7; rank >= 0; rank--) { 
         for (let file = 0; file < 8; file++) {
             let node = document.createElement('div');
@@ -54,8 +50,8 @@ function displayValidMoves(moves) {
 function squareClickHandler(event) {
     let file = event.currentTarget.getAttribute('data-file');
     let rank = event.currentTarget.getAttribute('data-rank');
-    let piece = board[rank][file];
+    let piece = Board.getInstance().array[rank][file];
     if (piece !== undefined) {
-        displayValidMoves(piece.getValidMoves(board));
+        displayValidMoves(piece.getValidMoves(Board.getInstance().array));
     }
 }

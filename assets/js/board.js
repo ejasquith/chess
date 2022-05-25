@@ -6,9 +6,17 @@ import Queen from './queen.js';
 import King from './king.js';
 
 export default class Board {
+    static instance = undefined;
     constructor() {
         this.array = [];
         this.initialiseBoard();
+    }
+
+    static getInstance() {
+        if (Board.instance === undefined) {
+            Board.instance = new Board();
+        }
+        return Board.instance;
     }
 
     initialiseBoard() {

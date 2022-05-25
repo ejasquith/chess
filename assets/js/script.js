@@ -87,7 +87,10 @@ function squareClickHandler(event) {
                 console.log('iteration');
             }
             if (flag) {
-                board.selectedPiece = undefined;
+                board.selectedPiece = board.array[rank][file];
+                if (board.selectedPiece !== undefined) {
+                    displayValidMoves(board.selectedPiece.getValidMoves(board.array));
+                }
             }
         }
     } else {

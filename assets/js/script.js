@@ -67,11 +67,14 @@ function squareClickHandler(event) {
     console.log(board.selectedPiece);
 
     if (board.selectedPiece !== undefined) {
+        console.log('!== undefined');
+        console.log(board);
         let flag = false;
-        if (board.selectedPiece.getValidMoves().length === 0) {
+        if (board.selectedPiece.getValidMoves(board.array).length === 0) {
+            console.log('length 0');
             board.selectedPiece = undefined;
         } else {
-            console.log(board.array);
+            console.log('not length 0');
             for (let move of board.selectedPiece.getValidMoves(board.array)) {
                 if (rank === move[0] && file === move[1]) {
                     board.selectedPiece.move(file, rank);

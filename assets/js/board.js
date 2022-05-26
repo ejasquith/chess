@@ -65,7 +65,19 @@ export default class Board {
     }
 
     movePiece(piece, oldCoords, newCoords) {
-        this.array[oldCoords[0]].splice(oldCoords[1], 1, undefined);
+        //this.array[oldCoords[0]].splice(oldCoords[1], 1, undefined);
+        this.array[oldCoords[0]][oldCoords[1]] = undefined;
         this.array[newCoords[0]][newCoords[1]] = piece;
+
+        // castling - move rook as well
+        if (piece instanceof King && newCoords[0] === oldCoords[0] + 2) {
+            let rook = this.array[oldCoords[0]][7];
+            this.array[oldCoords[0]][7] = undefined;
+            this.array[oldCoords][0][5] = rook;
+        } else if (piece instanceof King && newCoords[0] === oldCoords[0] - 2) {
+            let rook = this.array[oldCoords[0]][0];
+            this.array[oldCoords[0]][0] = undefined;
+            this.array[oldCoords][0][3] = rook;
+        }
     }
 }

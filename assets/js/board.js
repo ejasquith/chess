@@ -70,14 +70,14 @@ export default class Board {
         this.array[newCoords[0]][newCoords[1]] = piece;
 
         // castling - move rook as well
-        if (piece instanceof King && newCoords[0] === oldCoords[0] + 2) {
+        if (piece instanceof King && newCoords[1] === oldCoords[1] + 2) {
             let rook = this.array[oldCoords[0]][7];
             this.array[oldCoords[0]][7] = undefined;
-            this.array[oldCoords][0][5] = rook;
-        } else if (piece instanceof King && newCoords[0] === oldCoords[0] - 2) {
+            this.array[oldCoords[0]][5] = rook;
+        } else if (piece instanceof King && newCoords[1] === oldCoords[1] - 2) {
             let rook = this.array[oldCoords[0]][0];
             this.array[oldCoords[0]][0] = undefined;
-            this.array[oldCoords][0][3] = rook;
+            this.array[oldCoords[0]][3] = rook;
         }
     }
 }

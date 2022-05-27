@@ -21,9 +21,9 @@ export default class Pawn extends Piece {
             && board[this.position.rank+sign][this.position.file+sign].colour !== this.colour) {
                 moves.push([this.position.rank+sign, this.position.file+sign])
         }
-        if (board[this.position.rank-sign][this.position.file-sign] !== undefined
-            && board[this.position.rank-sign][this.position.file-sign].colour !== this.colour) {
-                moves.push([this.position.rank-sign, this.position.file-sign])
+        if (board[this.position.rank+sign][this.position.file-sign] !== undefined
+            && board[this.position.rank+sign][this.position.file-sign].colour !== this.colour) {
+                moves.push([this.position.rank+sign, this.position.file-sign])
         }
         return moves;
     }

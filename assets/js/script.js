@@ -63,43 +63,48 @@ function squareClickHandler(event) {
     let board = Board.getInstance();
 
     clearHighlights();
-
-    console.log(board.selectedPiece);
-
-    if (board.selectedPiece !== undefined) {
-        console.log('!== undefined');
-        console.log(board);
-        let flag = false;
-        if (board.selectedPiece.getValidMoves(board.array).length === 0) {
-            console.log('length 0');
-            board.selectedPiece = undefined;
-        } else {
-            console.log('not length 0');
+    
+    if (board.selectedPiece === undefined) {
+        // if no piece selected, select new piece and display its moves
+        if (board.array[rank][file] !== undefined) {
+            board.selectedPiece = board.array[rank][file];
+            if (board.selectedPiece !== undefined && board.selectedPiece.getValidMoves(board.array).length !== 0) {
+                displayValidMoves(board.selectedPiece.getValidMoves(board.array));
+            } else {
+                board.selectedPiece = undefined;
+            }
+        }
+    } else {
+        // if piece is selected, and it has valid moves:
+        if (board.selectedPiece.getValidMoves(board.array).length !== 0) {
+            // check if clicked square is in its valid moves
+            let found = false;
             for (let move of board.selectedPiece.getValidMoves(board.array)) {
                 if (rank === move[0] && file === move[1]) {
+                    // if it is, move the piece, deselect it, and update HTML:
                     board.selectedPiece.move(file, rank);
                     board.selectedPiece = undefined;
                     initialiseHTML(board.array);
+                    found = true;
                     break;
-                } else {
-                    flag = true;
                 }
-                console.log('iteration');
             }
-            if (flag) {
+            // if it wasn't:
+            if (!found) {
+                // select the piece that was clicked on (or undefined if it was an empty square)
                 board.selectedPiece = board.array[rank][file];
-                if (board.selectedPiece !== undefined) {
+                // if the new piece doesn't have any moves, deselect it
+                if (board.selectedPiece !== undefined && board.selectedPiece.getValidMoves(board.array).length === 0) {
+                    board.selectedPiece = undefined;
+                // if it does, display those moves
+                } else if (board.selectedPiece !== undefined) {
                     displayValidMoves(board.selectedPiece.getValidMoves(board.array));
                 }
             }
         }
-    } else {
-        let piece = board.array[rank][file];
-        if (piece !== undefined) {
-            console.log(board.array);
-            displayValidMoves(piece.getValidMoves(board.array));
+        // if the previously selected piece had no valid moves, select new piece
+        else {
+            board.selectedPiece = board.array[rank][file];
         }
-        board.selectedPiece = piece;
     }
-    console.log('end of handler');
 }

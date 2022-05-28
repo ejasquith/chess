@@ -4,6 +4,7 @@ import Knight from './knight.js';
 import Bishop from './bishop.js';
 import Queen from './queen.js';
 import King from './king.js';
+import Game from './game.js';
 
 export default class Board {
     static instance = undefined;
@@ -79,5 +80,8 @@ export default class Board {
             this.array[oldCoords[0]][0] = undefined;
             this.array[oldCoords[0]][3] = rook;
         }
+        
+        Game.getInstance().updateHistory(piece, oldCoords, newCoords);
+        Game.getInstance().updateTurn();
     }
 }

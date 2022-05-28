@@ -1,4 +1,5 @@
 import Board from './board.js';
+import Game from './game.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     let board = Board.getInstance().array;

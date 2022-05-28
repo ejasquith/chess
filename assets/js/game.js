@@ -20,7 +20,7 @@ export default class Game {
     generateHistoryString() {
         let turn = 1;
         let string = '';
-        for (let move of Game.history) {
+        for (let move of this.history) {
             if (move[0].colour === 'white') {
                 string += `${turn}. `;
             }

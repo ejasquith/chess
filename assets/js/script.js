@@ -27,6 +27,12 @@ function initialiseHTML(boardTemp) {
     }
 }
 
+function updateHistory() {
+    let historyArea = document.getElementById('game-history');
+    historyArea.innerHTML = Game.getInstance().generateHistoryString();
+
+}
+
 function displayValidMoves(moves) {
     let squares = document.getElementsByClassName('square');
     clearHighlights();
@@ -80,6 +86,7 @@ function squareClickHandler(event) {
                     board.selectedPiece.move(file, rank);
                     board.selectedPiece = undefined;
                     initialiseHTML(board.array);
+                    updateHistory();
                     found = true;
                     break;
                 }

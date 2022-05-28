@@ -39,26 +39,31 @@ export default class Game {
             } else if (move.piece.constructor.name === 'King' && move.newCoords[1] === move.oldCoords[1] - 2) {
                 moveString += 'O-O-O';
             } else {
-                switch (move.piece.constructor.name) {
-                    case 'Pawn':
-                        if (move.capturedPiece !== undefined) {
-                            moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
-                        }
-                        break;
-                    case 'Knight':
-                        moveString += 'N';
-                        break;
-                    default:
-                        moveString += move.piece.constructor.name.charAt(0);
+                if (move.promotion) {
+                    if (move.capturedPiece !== undefined) {
+                        moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
+                    }
+                } else {
+                    switch (move.piece.constructor.name) {
+                        case 'Pawn':
+                            if (move.capturedPiece !== undefined) {
+                                moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
+                            }
+                            break;
+                        case 'Knight':
+                            moveString += 'N';
+                            break;
+                        default:
+                            moveString += move.piece.constructor.name.charAt(0);
+                    }
                 }
                 if (move.capturedPiece !== undefined) {
                     moveString += 'x';
                 }
                 moveString += Game.#getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
             }
-
             if (move.promotion) {
-                moveString += `=${Board.getInstance().array[move.newCoords[0]][move.newCoords[1]].constructor.name.charAt(0)}`;
+                moveString += `=${move.piece.constructor.name.charAt(0)}`;
             }
 
             if (move.checkmate) {

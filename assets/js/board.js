@@ -110,16 +110,24 @@ export default class Board {
                     // switch for piece selection
                     switch (event.currentTarget.id) {
                         case 'promotion-btn-queen':
-                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Queen(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece = new Queen(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece.hasMoved = true;
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = piece;
                             break;
                         case 'promotion-btn-rook':
-                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Rook(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece = new Rook(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece.hasMoved = true;
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = piece;
                             break;
                         case 'promotion-btn-bishop':
-                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Bishop(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece = new Bishop(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece.hasMoved = true;
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = piece;
                             break;
                         case 'promotion-btn-knight':
-                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Knight(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece = new Knight(colour, {file: newCoords[1], rank: newCoords[0]});
+                            piece.hasMoved = true;
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = piece;
                             break;
                     }
                     Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});

@@ -14,7 +14,5 @@ export default class Piece {
         this.position.file = file;
         this.position.rank = rank;
         this.hasMoved = true;
-        console.log('moving piece');
-        // edit html, deal with captures
     }
 }

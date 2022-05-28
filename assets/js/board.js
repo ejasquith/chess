@@ -68,6 +68,7 @@ export default class Board {
     movePiece(piece, oldCoords, newCoords) {
         //this.array[oldCoords[0]].splice(oldCoords[1], 1, undefined);
         this.array[oldCoords[0]][oldCoords[1]] = undefined;
+        let capturedPiece = this.array[newCoords[0]][newCoords[1]];
         this.array[newCoords[0]][newCoords[1]] = piece;
 
         // castling - move rook as well
@@ -80,8 +81,8 @@ export default class Board {
             this.array[oldCoords[0]][0] = undefined;
             this.array[oldCoords[0]][3] = rook;
         }
-        
-        Game.getInstance().updateHistory(piece, oldCoords, newCoords);
+
+        Game.getInstance().updateHistory(piece, oldCoords, newCoords, capturedPiece, false);
         Game.getInstance().updateTurn();
     }
 }

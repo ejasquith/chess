@@ -13,8 +13,8 @@ export default class Game {
         return Game.instance;
     }
 
-    updateHistory(piece, oldCoords, newCoords) {
-        this.history.push([piece, oldCoords, newCoords]);
+    updateHistory(piece, oldCoords, newCoords, capturedPiece, check) {
+        this.history.push([piece, oldCoords, newCoords, capturedPiece, check]);
     }
 
     generateHistoryString() {
@@ -27,6 +27,9 @@ export default class Game {
             let moveString = '';
             switch (move[0].constructor.name) {
                 case 'Pawn':
+                    if (move[3] !== undefined) {
+                        moveString += Game.#getAlgebraicCoords(move[1][1], move[1][0]).charAt(0);
+                    }
                     break;
                 case 'Knight':
                     moveString += 'N';
@@ -34,7 +37,14 @@ export default class Game {
                 default:
                     moveString += move[0].constructor.name.charAt(0);
             }
+            if (move[3] !== undefined) {
+                moveString += 'x';
+            }
             moveString += Game.#getAlgebraicCoords(move[2][1], move[2][0]);
+            if (move[4]) {
+                moveString += '+';
+            }
+
             string += moveString + ' ';
 
             if (move[0].colour === 'black') {

@@ -13,21 +13,26 @@ export default class Game {
         return Game.instance;
     }
 
-    updateHistory(piece, oldCoords, newCoords, capturedPiece, checkmate, check) {
-        this.history.push([piece, oldCoords, newCoords, capturedPiece, checkmate, check]);
+    static #getAlgebraicCoords(file, rank) {
+        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        return letters[file] + (rank+1);
+    }
+
+    updateHistory(move) {
+        this.history.push(move);
     }
 
     generateHistoryString() {
         let turn = 1;
         let string = '';
         for (let move of this.history) {
-            if (move[0].colour === 'white') {
+            if (move.piece.colour === 'white') {
                 string += `${turn}. `;
             }
             let moveString = '';
-            switch (move[0].constructor.name) {
+            switch (move.piece.constructor.name) {
                 case 'Pawn':
-                    if (move[3] !== undefined) {
+                    if (move.capturedPiece !== undefined) {
                         moveString += Game.#getAlgebraicCoords(move[1][1], move[1][0]).charAt(0);
                     }
                     break;
@@ -35,22 +40,22 @@ export default class Game {
                     moveString += 'N';
                     break;
                 default:
-                    moveString += move[0].constructor.name.charAt(0);
+                    moveString += move.piece.constructor.name.charAt(0);
             }
-            if (move[3] !== undefined) {
+            if (move.capturedPiece !== undefined) {
                 moveString += 'x';
             }
-            moveString += Game.#getAlgebraicCoords(move[2][1], move[2][0]);
+            moveString += Game.#getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
 
-            if (move[4]) {
+            if (move.checkmate) {
                 moveString += '#';
-            } else if (move[5]) {
+            } else if (move.check) {
                 moveString += '+';
             }
 
             string += moveString + ' ';
 
-            if (move[0].colour === 'black') {
+            if (move.piece.colour === 'black') {
                 turn++;
             }
         }
@@ -65,10 +70,5 @@ export default class Game {
         } else {
             this.activePlayer = 'black';
         }
-    }
-
-    static #getAlgebraicCoords(file, rank) {
-        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
-        return letters[file] + (rank+1);
     }
 }

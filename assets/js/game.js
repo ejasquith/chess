@@ -25,4 +25,9 @@ export default class Game {
             this.activePlayer = 'black';
         }
     }
+
+    #getAlgebraicCoords(file, rank) {
+        const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        return letters[file] + (rank+1);
+    }
 }

@@ -60,12 +60,13 @@ function squareClickHandler(event) {
     let file = parseInt(event.currentTarget.getAttribute('data-file'));
     let rank = parseInt(event.currentTarget.getAttribute('data-rank'));
     let board = Board.getInstance();
+    let game = Game.getInstance();
 
     clearHighlights();
-    
+
     if (board.selectedPiece === undefined) {
-        // if no piece selected, select new piece and display its moves
-        if (board.array[rank][file] !== undefined) {
+        // if no piece selected, select new piece and display its moves if it is the right colour
+        if (board.array[rank][file] !== undefined && board.array[rank][file].colour === game.activePlayer) {
             board.selectedPiece = board.array[rank][file];
             if (board.selectedPiece !== undefined && board.selectedPiece.getValidMoves(board.array).length !== 0) {
                 displayValidMoves(board.selectedPiece.getValidMoves(board.array));
@@ -74,8 +75,8 @@ function squareClickHandler(event) {
             }
         }
     } else {
-        // if piece is selected, and it has valid moves:
-        if (board.selectedPiece.getValidMoves(board.array).length !== 0) {
+        // if piece is selected, and it has valid moves, and is the right colour:
+        if (board.selectedPiece.getValidMoves(board.array).length !== 0 && board.selectedPiece.colour === game.activePlayer) {
             // check if clicked square is in its valid moves
             let found = false;
             for (let move of board.selectedPiece.getValidMoves(board.array)) {
@@ -92,8 +93,8 @@ function squareClickHandler(event) {
             if (!found) {
                 // select the piece that was clicked on (or undefined if it was an empty square)
                 board.selectedPiece = board.array[rank][file];
-                // if the new piece doesn't have any moves, deselect it
-                if (board.selectedPiece !== undefined && board.selectedPiece.getValidMoves(board.array).length === 0) {
+                // if the new piece doesn't have any moves, or if it's the wrong colour, deselect it
+                if (board.selectedPiece !== undefined && (board.selectedPiece.getValidMoves(board.array).length === 0 || board.selectedPiece.colour !== game.activePlayer)) {
                     board.selectedPiece = undefined;
                 // if it does, display those moves
                 } else if (board.selectedPiece !== undefined) {
@@ -101,8 +102,8 @@ function squareClickHandler(event) {
                 }
             }
         }
-        // if the previously selected piece had no valid moves, select new piece
-        else {
+        // if the previously selected piece had no valid moves, select new piece if it is the right colour
+        else if (board.array[rank][file].colour === game.activePlayer) {
             board.selectedPiece = board.array[rank][file];
         }
     }

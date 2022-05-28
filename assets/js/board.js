@@ -94,6 +94,14 @@ export default class Board {
             this.array[oldCoords[0]][3] = rook;
         }
 
+        // pawn promotion
+        if (piece instanceof Pawn && (newCoords[0] === 0 || newCoords[0] === 7)) {
+            // display modal
+            let colour = newCoords[0] === 7 ? 'white' : 'black';
+            // switch for piece selection
+            this.array[newCoords[0]][newCoords[1]] = new Queen(colour, {file: newCoords[1], rank: newCoords[0]});
+        }
+
         Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false});
         Game.getInstance().updateTurn();
     }

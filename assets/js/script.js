@@ -84,10 +84,7 @@ function squareClickHandler(event) {
                 if (rank === move[0] && file === move[1]) {
                     // if it is, move the piece, deselect it, and update HTML:
                     // promise?
-                    board.selectedPiece.move(file, rank);
-                    board.selectedPiece = undefined;
-                    initialiseHTML(board.array);
-                    updateHistory();
+                    board.selectedPiece.move(file, rank, afterMove);                    
                     found = true;
                     break;
                 }
@@ -110,4 +107,10 @@ function squareClickHandler(event) {
             board.selectedPiece = board.array[rank][file];
         }
     }
+}
+
+function afterMove() {
+    Board.getInstance().selectedPiece = undefined;
+    initialiseHTML(Board.getInstance().array);
+    updateHistory();
 }

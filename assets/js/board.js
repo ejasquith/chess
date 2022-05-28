@@ -65,7 +65,7 @@ export default class Board {
         console.log(this.array);
     }
 
-    movePiece(piece, oldCoords, newCoords) {
+    movePiece(piece, oldCoords, newCoords, callback) {
         let capturedPiece;
 
         // en passant
@@ -110,32 +110,28 @@ export default class Board {
                     // switch for piece selection
                     switch (event.currentTarget.id) {
                         case 'promotion-btn-queen':
-                            console.log('clicked queen');
                             Board.getInstance().array[newCoords[0]][newCoords[1]] = new Queen(colour, {file: newCoords[1], rank: newCoords[0]});
                             break;
                         case 'promotion-btn-rook':
-                            console.log('clicked rook');
                             Board.getInstance().array[newCoords[0]][newCoords[1]] = new Rook(colour, {file: newCoords[1], rank: newCoords[0]});
                             break;
                         case 'promotion-btn-bishop':
-                            console.log('clicked bishop');
                             Board.getInstance().array[newCoords[0]][newCoords[1]] = new Bishop(colour, {file: newCoords[1], rank: newCoords[0]});
                             break;
                         case 'promotion-btn-knight':
-                            console.log('clicked knight');
                             Board.getInstance().array[newCoords[0]][newCoords[1]] = new Knight(colour, {file: newCoords[1], rank: newCoords[0]});
                             break;
-                        default:
-                            console.log('somethings gone wrojng');
                     }
-                    console.log(Board.getInstance().array[newCoords[0]][newCoords[1]])
+                    Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
+                    Game.getInstance().updateTurn();
+                    callback();
                 })
             }
-            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
-            Game.getInstance().updateTurn();
+            
         } else {
             Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
             Game.getInstance().updateTurn();
+            callback();
         }
     }
 }

@@ -1,7 +1,7 @@
 import Piece from './piece.js';
 
 export default class Knight extends Piece {
-    getValidMoves(board) {
+    getValidMoves(board, lookForChecks = true) {
         let rank = this.position.rank;
         let file = this.position.file;
         let moves = [];

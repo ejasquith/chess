@@ -175,7 +175,8 @@ export default class Board {
         for (let rank of board) {
             for (let square of rank) {
                 if (square !== undefined && square.colour !== colour) {
-                    let moves = square.getValidMoves();
+                    // infinite recursion? flag to say dont look for checks
+                    let moves = square.getValidMoves(board, false);
                     for (let move of moves) {
                         if (board[move[0]][move[1]] !== undefined && board[move[0]][move[1]].constructor.name === 'King' && board[move[0]][move[1]].colour === colour) {
                             check = true;

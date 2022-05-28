@@ -7,7 +7,7 @@ export default class Piece {
         this.hasMoved = false;
     }
     
-    getValidMoves(board) {}
+    getValidMoves(board, lookForChecks = true) {}
 
     move(file, rank, callback) {
         Board.getInstance().movePiece(this, [this.position.rank, this.position.file], [rank, file], callback);

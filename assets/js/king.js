@@ -3,7 +3,7 @@ import Piece from './piece.js';
 import Rook from './rook.js';
 
 export default class King extends Piece {
-    getValidMoves(board) {
+    getValidMoves(board, lookForChecks = true) {
         let moves = [];
         let rank = this.position.rank;
         let file = this.position.file;

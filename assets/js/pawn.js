@@ -2,7 +2,7 @@ import Piece from './piece.js';
 import Game from './game.js';
 
 export default class Pawn extends Piece {
-    getValidMoves(board) {
+    getValidMoves(board, lookForChecks = true) {
         let moves = [];
         let sign = this.colour === 'white' ? 1 : -1;
         // undefined means either array location is empty (ie no piece), or doesn't exist

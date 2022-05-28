@@ -1,7 +1,7 @@
 import Piece from './piece.js';
 
 export default class Bishop extends Piece {
-    getValidMoves(board) {
+    getValidMoves(board, lookForChecks = true) {
         let moves = [];
         let rank = this.position.rank;
         let file = this.position.file;

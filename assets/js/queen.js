@@ -1,7 +1,7 @@
 import Piece from './piece.js';
 
 export default class Queen extends Piece {
-    getValidMoves(board) {
+    getValidMoves(board, lookForChecks = true) {
         let moves = [];
         for (let rank = this.position.rank + 1; rank <= 7; rank++) {
             if (board[rank][this.position.file] !== undefined) {

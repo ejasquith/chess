@@ -1,3 +1,5 @@
+import King from './king.js';
+
 export default class Game {
     static instance = undefined;
     constructor() {
@@ -29,24 +31,31 @@ export default class Game {
             if (move.piece.colour === 'white') {
                 string += `${turn}. `;
             }
-            let moveString = '';
-            switch (move.piece.constructor.name) {
-                case 'Pawn':
-                    if (move.capturedPiece !== undefined) {
-                        moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
-                    }
-                    break;
-                case 'Knight':
-                    moveString += 'N';
-                    break;
-                default:
-                    moveString += move.piece.constructor.name.charAt(0);
-            }
-            if (move.capturedPiece !== undefined) {
-                moveString += 'x';
-            }
-            moveString += Game.#getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
 
+            let moveString = '';
+
+            if (move.piece.constructor.name === 'King' && move.newCoords[1] === move.oldCoords[1] + 2) {
+                moveString += 'O-O';
+            } else if (move.piece.constructor.name === 'King' && move.newCoords[1] === move.oldCoords[1] - 2) {
+                moveString += 'O-O-O';
+            } else {
+                switch (move.piece.constructor.name) {
+                    case 'Pawn':
+                        if (move.capturedPiece !== undefined) {
+                            moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
+                        }
+                        break;
+                    case 'Knight':
+                        moveString += 'N';
+                        break;
+                    default:
+                        moveString += move.piece.constructor.name.charAt(0);
+                }
+                if (move.capturedPiece !== undefined) {
+                    moveString += 'x';
+                }
+                moveString += Game.#getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
+            }
             if (move.checkmate) {
                 moveString += '#';
             } else if (move.check) {

@@ -34,7 +34,7 @@ export default class Game {
                 default:
                     moveString += move[0].constructor.name.charAt(0);
             }
-            moveString += Game.#getAlgebraicCoords(move[2][1][0]);
+            moveString += Game.#getAlgebraicCoords(move[2][1], move[2][0]);
             string += moveString + ' ';
 
             if (move[0].colour === 'black') {

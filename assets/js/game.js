@@ -14,7 +14,7 @@ export default class Game {
     }
 
     updateHistory(piece, oldCoords, newCoords, capturedPiece, check) {
-        this.history.push([piece, oldCoords, newCoords, capturedPiece, check]);
+        this.history.push([piece, oldCoords, newCoords, capturedPiece, checkmate, check]);
     }
 
     generateHistoryString() {
@@ -41,7 +41,10 @@ export default class Game {
                 moveString += 'x';
             }
             moveString += Game.#getAlgebraicCoords(move[2][1], move[2][0]);
+
             if (move[4]) {
+                moveString += '#';
+            } else if (move[5]) {
                 moveString += '+';
             }
 

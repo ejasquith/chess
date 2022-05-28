@@ -82,7 +82,7 @@ export default class Board {
             this.array[oldCoords[0]][3] = rook;
         }
 
-        Game.getInstance().updateHistory(piece, oldCoords, newCoords, capturedPiece, false);
+        Game.getInstance().updateHistory(piece, oldCoords, newCoords, capturedPiece, false, false);
         Game.getInstance().updateTurn();
     }
 }

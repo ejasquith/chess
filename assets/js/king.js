@@ -1,3 +1,4 @@
+import Board from './board.js';
 import Piece from './piece.js';
 import Rook from './rook.js';
 

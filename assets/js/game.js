@@ -4,6 +4,8 @@ export default class Game {
     static instance = undefined;
     constructor() {
         this.activePlayer = 'white';
+        this.blackInCheck = false;
+        this.whiteInCheck = false;
         this.turn = 1;
         this.history = [];
     }

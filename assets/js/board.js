@@ -152,4 +152,38 @@ export default class Board {
             callback();
         }
     }
+
+    findChecks(colour, move) {
+        // before every move, will this put either king in check?
+        // in getValidMove, if own king in check, not valid move
+        // make temporary array with move made to check
+        
+        let board = this.array;
+
+        let check = false;
+
+        // if move passed, use modified board state
+        if (move !== undefined) {
+            let piece = board[move.oldCoords[0]][move.oldCoords[1]];
+            board[move.newCoords[0]][move.newCoords[1]] = piece;
+            if (move.ep) {
+                board[move.oldCoords[0]][move.newCoords[1]] = undefined;
+            }
+            board[move.oldCoords[0]][move.oldCoords[1]] = undefined;
+        }
+
+        for (let rank of board) {
+            for (let square of rank) {
+                if (square !== undefined && square.colour !== colour) {
+                    let moves = square.getValidMoves();
+                    for (let move of moves) {
+                        if (board[move[0]][move[1]] !== undefined && board[move[0]][move[1]].constructor.name === 'King' && board[move[0]][move[1]].colour === colour) {
+                            check = true;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }

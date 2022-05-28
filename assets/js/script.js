@@ -12,8 +12,6 @@ function getAlgebraicCoords(file, rank) {
 
 function initialiseHTML(boardTemp) {
     document.getElementById('board').innerHTML = '';
-    //let boardTemp = board.reverse();
-    console.log(boardTemp);
     for (let rank = 7; rank >= 0; rank--) { 
         for (let file = 0; file < 8; file++) {
             let node = document.createElement('div');

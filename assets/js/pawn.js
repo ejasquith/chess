@@ -9,10 +9,10 @@ export default class Pawn extends Piece {
         // actually probably don't - if pawn is on 8th/1st rank, that means it has promoted and is no longer pawn
         if (this.position.rank + sign <= 7 && board[this.position.rank+sign][this.position.file] === undefined) {
             moves.push([this.position.rank+sign, this.position.file]);
-        }
-        // no need to check index here as it can only ever be true when pawn is on second/seventh rank
-        if (!this.hasMoved && board[this.position.rank+2*sign][this.position.file] === undefined) {
-            moves.push([this.position.rank+2*sign, this.position.file]);
+            // no need to check index here as it can only ever be true when pawn is on second/seventh rank
+            if (!this.hasMoved && board[this.position.rank+2*sign][this.position.file] === undefined) {
+                moves.push([this.position.rank+2*sign, this.position.file]);
+            }
         }
         // doesn't need to check if index out of bounds, because out of bounds values return undefined
         // would return error when checking piece colour, if the condition didn't fail and

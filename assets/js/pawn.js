@@ -1,4 +1,5 @@
 import Piece from './piece.js';
+import Game from './game.js';
 
 export default class Pawn extends Piece {
     getValidMoves(board) {
@@ -24,6 +25,32 @@ export default class Pawn extends Piece {
         if (board[this.position.rank+sign][this.position.file-sign] !== undefined
             && board[this.position.rank+sign][this.position.file-sign].colour !== this.colour) {
                 moves.push([this.position.rank+sign, this.position.file-sign])
+        }
+
+        // logic for en passant
+        let game = Game.getInstance();
+        if (game.history.length !== 0) {
+            let lastMove = game.history[game.history.length - 1];
+
+            if ((this.position.rank === 3 || this.position.rank === 4) &&
+                board[this.position.rank][this.position.file + 1] !== undefined &&
+                board[this.position.rank][this.position.file + 1].constructor.name === 'Pawn' &&
+                lastMove.piece.constructor.name === 'Pawn' &&
+                lastMove.newCoords[0] === this.position.rank &&
+                lastMove.newCoords[1] === this.position.file + 1 &&
+                (lastMove.oldCoords[0] === 1 || lastMove.oldCoords[0] === 6)) {
+                    moves.push([this.position.rank + sign, this.position.file + 1]);
+            }
+
+            if ((this.position.rank === 3 || this.position.rank === 4) &&
+                board[this.position.rank][this.position.file - 1] !== undefined &&
+                board[this.position.rank][this.position.file - 1].constructor.name === 'Pawn' &&
+                lastMove.piece.constructor.name === 'Pawn' &&
+                lastMove.newCoords[0] === this.position.rank &&
+                lastMove.newCoords[1] === this.position.file - 1 &&
+                (lastMove.oldCoords[0] === 1 || lastMove.oldCoords[0] === 6)) {
+                    moves.push([this.position.rank + sign, this.position.file - 1]);
+            }
         }
         return moves;
     }

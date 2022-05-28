@@ -13,7 +13,7 @@ export default class Game {
         return Game.instance;
     }
 
-    updateHistory(piece, oldCoords, newCoords, capturedPiece, check) {
+    updateHistory(piece, oldCoords, newCoords, capturedPiece, checkmate, check) {
         this.history.push([piece, oldCoords, newCoords, capturedPiece, checkmate, check]);
     }
 

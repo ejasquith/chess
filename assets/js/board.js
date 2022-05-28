@@ -66,9 +66,21 @@ export default class Board {
     }
 
     movePiece(piece, oldCoords, newCoords) {
-        //this.array[oldCoords[0]].splice(oldCoords[1], 1, undefined);
+        let capturedPiece;
+
+        // en passant
+        // if pawn is moving file (capturing) and new square does not have a piece (en passant)
+        let enPassant = false;
+        if (piece instanceof Pawn && newCoords[1] !== oldCoords[1] && this.array[newCoords[0]][newCoords[1]] === undefined) {
+            capturedPiece = this.array[oldCoords[0]][newCoords[1]];
+            this.array[oldCoords[0]][newCoords[1]] = undefined;
+            enPassant = true;
+        }
+
         this.array[oldCoords[0]][oldCoords[1]] = undefined;
-        let capturedPiece = this.array[newCoords[0]][newCoords[1]];
+        if (!enPassant) {
+            capturedPiece = this.array[newCoords[0]][newCoords[1]];
+        }
         this.array[newCoords[0]][newCoords[1]] = piece;
 
         // castling - move rook as well

@@ -100,7 +100,18 @@ export default class Board {
             promotion = true;
             // display modal
             let modal = document.getElementById('promotion-modal');
+            modal.innerHTML = '<p>Choose piece to promote to:</p>';
+
             modal.style.display = 'block';
+
+            let options = ['Queen', 'Rook', 'Bishop', 'Knight'];
+            for (let option of options) {
+                let btn = document.createElement('button');
+                btn.innerHTML = option;
+                btn.setAttribute('class', 'promotion-btn');
+                btn.setAttribute('id', `promotion-btn-${option.toLowerCase()}`);
+                document.getElementById('promotion-modal').appendChild(btn);
+            }
 
             let promotionButtons = document.getElementsByClassName('promotion-btn');
             for (let btn of promotionButtons) {

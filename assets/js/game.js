@@ -33,7 +33,7 @@ export default class Game {
             switch (move.piece.constructor.name) {
                 case 'Pawn':
                     if (move.capturedPiece !== undefined) {
-                        moveString += Game.#getAlgebraicCoords(move[1][1], move[1][0]).charAt(0);
+                        moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
                     }
                     break;
                 case 'Knight':

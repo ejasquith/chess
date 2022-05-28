@@ -17,6 +17,34 @@ export default class Game {
         this.history.push([piece, oldCoords, newCoords]);
     }
 
+    generateHistoryString() {
+        let turn = 1;
+        let string = '';
+        for (let move of Game.history) {
+            if (move[0].colour === 'white') {
+                string += `${turn}. `;
+            }
+            let moveString = '';
+            switch (move[0].constructor.name) {
+                case 'Pawn':
+                    break;
+                case 'Knight':
+                    moveString += 'N';
+                    break;
+                default:
+                    moveString += move[0].constructor.name.charAt(0);
+            }
+            moveString += Game.#getAlgebraicCoords(move[2][1][0]);
+            string += moveString + ' ';
+
+            if (move[0].colour === 'black') {
+                turn++;
+            }
+        }
+
+        return string;
+    }
+
     updateTurn() {
         if (this.activePlayer === 'black') {
             this.turn++;
@@ -26,7 +54,7 @@ export default class Game {
         }
     }
 
-    #getAlgebraicCoords(file, rank) {
+    static #getAlgebraicCoords(file, rank) {
         const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
         return letters[file] + (rank+1);
     }

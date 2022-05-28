@@ -95,14 +95,47 @@ export default class Board {
         }
 
         // pawn promotion
+        let promotion = false;
         if (piece instanceof Pawn && (newCoords[0] === 0 || newCoords[0] === 7)) {
+            promotion = true;
             // display modal
-            let colour = newCoords[0] === 7 ? 'white' : 'black';
-            // switch for piece selection
-            this.array[newCoords[0]][newCoords[1]] = new Queen(colour, {file: newCoords[1], rank: newCoords[0]});
-        }
+            let modal = document.getElementById('promotion-modal');
+            modal.style.display = 'block';
 
-        Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false});
-        Game.getInstance().updateTurn();
+            let promotionButtons = document.getElementsByClassName('promotion-btn');
+            for (let btn of promotionButtons) {
+                btn.addEventListener('click', function(event) {
+                    modal.style.display = 'none';
+                    let colour = newCoords[0] === 7 ? 'white' : 'black';
+                    // switch for piece selection
+                    switch (event.currentTarget.id) {
+                        case 'promotion-btn-queen':
+                            console.log('clicked queen');
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Queen(colour, {file: newCoords[1], rank: newCoords[0]});
+                            break;
+                        case 'promotion-btn-rook':
+                            console.log('clicked rook');
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Rook(colour, {file: newCoords[1], rank: newCoords[0]});
+                            break;
+                        case 'promotion-btn-bishop':
+                            console.log('clicked bishop');
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Bishop(colour, {file: newCoords[1], rank: newCoords[0]});
+                            break;
+                        case 'promotion-btn-knight':
+                            console.log('clicked knight');
+                            Board.getInstance().array[newCoords[0]][newCoords[1]] = new Knight(colour, {file: newCoords[1], rank: newCoords[0]});
+                            break;
+                        default:
+                            console.log('somethings gone wrojng');
+                    }
+                    console.log(Board.getInstance().array[newCoords[0]][newCoords[1]])
+                })
+            }
+            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
+            Game.getInstance().updateTurn();
+        } else {
+            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
+            Game.getInstance().updateTurn();
+        }
     }
 }

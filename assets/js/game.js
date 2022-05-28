@@ -1,4 +1,4 @@
-import King from './king.js';
+import Board from './board.js';
 
 export default class Game {
     static instance = undefined;
@@ -56,6 +56,11 @@ export default class Game {
                 }
                 moveString += Game.#getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
             }
+
+            if (move.promotion) {
+                moveString += `=${Board.getInstance().array[move.newCoords[0]][move.newCoords[1]].constructor.name.charAt(0)}`;
+            }
+
             if (move.checkmate) {
                 moveString += '#';
             } else if (move.check) {

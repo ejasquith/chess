@@ -83,6 +83,7 @@ function squareClickHandler(event) {
             for (let move of board.selectedPiece.getValidMoves(board.array)) {
                 if (rank === move[0] && file === move[1]) {
                     // if it is, move the piece, deselect it, and update HTML:
+                    // promise?
                     board.selectedPiece.move(file, rank);
                     board.selectedPiece = undefined;
                     initialiseHTML(board.array);

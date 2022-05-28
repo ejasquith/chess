@@ -62,7 +62,6 @@ export default class Board {
             }
             this.array.push(rankArray);
         }
-        console.log(this.array);
     }
 
     movePiece(piece, oldCoords, newCoords, callback) {

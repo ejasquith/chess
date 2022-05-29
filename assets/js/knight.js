@@ -19,7 +19,7 @@ export default class Knight extends Piece {
                     if (board[rank + offset][file + offset2] !== undefined) {
                         if (board[rank + offset][file + offset2].colour !== this.colour) {
                             if (!lookForChecks ||
-                                Board.getInstance().findChecks(this.colour, {
+                                !Board.getInstance().findChecks(this.colour, {
                                 oldCoords: [this.position.rank, this.position.file],
                                 newCoords: [rank + offset, file + offset2],
                                 ep: false,
@@ -30,7 +30,7 @@ export default class Knight extends Piece {
                         }
                     } else {
                         if (!lookForChecks ||
-                            Board.getInstance().findChecks(
+                            !Board.getInstance().findChecks(
                                 this.colour, {
                                     oldCoords: [this.position.rank, this.position.file],
                                     newCoords: [rank + offset, file + offset2],

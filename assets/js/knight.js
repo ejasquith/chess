@@ -30,12 +30,15 @@ export default class Knight extends Piece {
                         }
                     } else {
                         if (!lookForChecks ||
-                            Board.getInstance().findChecks(this.colour, {
-                            oldCoords: [this.position.rank, this.position.file],
-                            newCoords: [rank + offset, file + offset2],
-                            ep: false,
-                            castle: false
-                        })) {
+                            Board.getInstance().findChecks(
+                                this.colour, {
+                                    oldCoords: [this.position.rank, this.position.file],
+                                    newCoords: [rank + offset, file + offset2],
+                                    ep: false,
+                                    castle: false
+                                }
+                            )
+                        ) {
                             moves.push([rank + offset, file + offset2]);
                         }
                     }

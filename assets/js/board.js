@@ -157,8 +157,13 @@ export default class Board {
         // before every move, will this put either king in check?
         // in getValidMove, if own king in check, not valid move
         // make temporary array with move made to check
-        
-        let board = this.array;
+        console.log(moveToCheck);
+
+        // deep copy board so that changes made will not affect original
+        let board = [];
+        for (let rank of this.array) {
+            board.push(rank.map((x) => x));
+        }
 
         let check = false;
 
@@ -173,6 +178,9 @@ export default class Board {
             }
             board[moveToCheck.oldCoords[0]][moveToCheck.oldCoords[1]] = undefined;
         }
+
+        console.log(board);
+        console.log(this.array);
 
         for (let rank of board) {
             for (let square of rank) {

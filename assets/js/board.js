@@ -166,6 +166,7 @@ export default class Board {
 
         let check = false;
 
+        console.log(moveToCheck);
         // if move passed, use modified board state
         if (moveToCheck !== undefined) {
             let piece = board[moveToCheck.oldCoords[0]][moveToCheck.oldCoords[1]];

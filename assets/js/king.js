@@ -50,7 +50,7 @@ export default class King extends Piece {
                 if (!lookForChecks ||
                     !Board.getInstance().findChecks(this.colour, {
                     oldCoords: [rank, file],
-                    newCoords: [rank + 1, file],
+                    newCoords: [rank - 1, file],
                     ep: false,
                     castle: false
                 })) {

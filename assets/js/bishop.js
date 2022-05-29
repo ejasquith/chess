@@ -1,4 +1,3 @@
-import Board from './board.js';
 import Piece from './piece.js';
 
 export default class Bishop extends Piece {
@@ -11,35 +10,11 @@ export default class Bishop extends Piece {
             file++;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    if (lookForChecks) {
-                        if (!board.findChecks(this.colour, 
-                            {
-                                oldCoords: [this.position.rank, this.position.file], 
-                                newCoords: [rank, file],
-                                ep: false
-                            }
-                        )) {
-                            moves.push([rank, file]);
-                        }
-                    } else {
-                        moves.push([rank, file]);
-                    }
+                    moves.push([rank, file]);
                 }
                 break;
             } else {
-                if (lookForChecks) {
-                    if (!board.findChecks(this.colour, 
-                        {
-                            oldCoords: [this.position.rank, this.position.file], 
-                            newCoords: [rank, file],
-                            ep: false
-                        }
-                    )) {
-                        moves.push([rank, file]);
-                    }
-                } else {
-                    moves.push([rank, file]);
-                }
+                moves.push([rank, file]);
             }
         }
 
@@ -50,35 +25,11 @@ export default class Bishop extends Piece {
             file--;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    if (lookForChecks) {
-                        if (!board.findChecks(this.colour, 
-                            {
-                                oldCoords: [this.position.rank, this.position.file], 
-                                newCoords: [rank, file],
-                                ep: false
-                            }
-                        )) {
-                            moves.push([rank, file]);
-                        }
-                    } else {
-                        moves.push([rank, file]);
-                    }
+                    moves.push([rank, file]);
                 }
                 break;
             } else {
-                if (lookForChecks) {
-                    if (!board.findChecks(this.colour, 
-                        {
-                            oldCoords: [this.position.rank, this.position.file], 
-                            newCoords: [rank, file],
-                            ep: false
-                        }
-                    )) {
-                        moves.push([rank, file]);
-                    }
-                } else {
-                    moves.push([rank, file]);
-                }
+                moves.push([rank, file]);
             }
         }
 
@@ -89,35 +40,11 @@ export default class Bishop extends Piece {
             file++;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    if (lookForChecks) {
-                        if (!board.findChecks(this.colour, 
-                            {
-                                oldCoords: [this.position.rank, this.position.file], 
-                                newCoords: [rank, file],
-                                ep: false
-                            }
-                        )) {
-                            moves.push([rank, file]);
-                        }
-                    } else {
-                        moves.push([rank, file]);
-                    }
+                    moves.push([rank, file]);
                 }
                 break;
             } else {
-                if (lookForChecks) {
-                    if (!board.findChecks(this.colour, 
-                        {
-                            oldCoords: [this.position.rank, this.position.file], 
-                            newCoords: [rank, file],
-                            ep: false
-                        }
-                    )) {
-                        moves.push([rank, file]);
-                    }
-                } else {
-                    moves.push([rank, file]);
-                }
+                moves.push([rank, file]);
             }
         }
 
@@ -128,35 +55,11 @@ export default class Bishop extends Piece {
             file--;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    if (lookForChecks) {
-                        if (!board.findChecks(this.colour, 
-                            {
-                                oldCoords: [this.position.rank, this.position.file], 
-                                newCoords: [rank, file],
-                                ep: false
-                            }
-                        )) {
-                            moves.push([rank, file]);
-                        }
-                    } else {
-                        moves.push([rank, file]);
-                    }
+                    moves.push([rank, file]);
                 }
                 break;
             } else {
-                if (lookForChecks) {
-                    if (!board.findChecks(this.colour, 
-                        {
-                            oldCoords: [this.position.rank, this.position.file], 
-                            newCoords: [rank, file],
-                            ep: false
-                        }
-                    )) {
-                        moves.push([rank, file]);
-                    }
-                } else {
-                    moves.push([rank, file]);
-                }
+                moves.push([rank, file]);
             }
         }
         return moves;

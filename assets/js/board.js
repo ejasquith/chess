@@ -184,7 +184,7 @@ export default class Board {
                 }
             }
         }
-        console.log(check);
+
         return check;
     }
 }

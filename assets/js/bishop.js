@@ -51,16 +51,13 @@ export default class Bishop extends Piece {
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
                     if (lookForChecks) {
-                        let checks = Board.getInstance().findChecks(this.colour, 
+                        if (!Board.getInstance().findChecks(this.colour, 
                             {
                                 oldCoords: [this.position.rank, this.position.file], 
                                 newCoords: [rank, file],
                                 ep: false
                             }
-                        );
-                        console.log(checks);
-                        if (!checks) {
-                            console.log('addng move');
+                        )) {
                             moves.push([rank, file]);
                         }
                     } else {
@@ -77,11 +74,9 @@ export default class Bishop extends Piece {
                             ep: false
                         }
                     )) {
-                        console.log('addng move');
                         moves.push([rank, file]);
                     }
                 } else {
-                    console.log('addng move');
                     moves.push([rank, file]);
                 }
             }
@@ -164,7 +159,6 @@ export default class Bishop extends Piece {
                 }
             }
         }
-        console.log(moves);
         return moves;
     }
 }

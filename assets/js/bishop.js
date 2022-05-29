@@ -60,7 +60,7 @@ export default class Bishop extends Piece {
                         );
                         console.log(checks);
                         if (!checks) {
-                            console.log('addng move', lookForChecks);
+                            console.log('addng move');
                             moves.push([rank, file]);
                         }
                     } else {
@@ -77,11 +77,11 @@ export default class Bishop extends Piece {
                             ep: false
                         }
                     )) {
-                        console.log('addng move', lookForChecks);
+                        console.log('addng move');
                         moves.push([rank, file]);
                     }
                 } else {
-                    console.log('addng move', lookForChecks);
+                    console.log('addng move');
                     moves.push([rank, file]);
                 }
             }

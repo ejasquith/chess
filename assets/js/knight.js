@@ -1,3 +1,4 @@
+import Board from './board.js';
 import Piece from './piece.js';
 
 export default class Knight extends Piece {
@@ -17,10 +18,26 @@ export default class Knight extends Piece {
                 } else if (!((rank + offset > 7) || (rank + offset < 0) || (file + offset2 > 7) || (file + offset2 < 0))) {
                     if (board[rank + offset][file + offset2] !== undefined) {
                         if (board[rank + offset][file + offset2].colour !== this.colour) {
-                            moves.push([rank + offset, file + offset2]);
+                            if (!lookForChecks ||
+                                Board.getInstance().findChecks(this.colour, {
+                                oldCoords: [this.position.rank, this.position.file],
+                                newCoords: [rank + offset, file + offset2],
+                                ep: false,
+                                castle: false
+                            })) {
+                                moves.push([rank + offset, file + offset2]);
+                            }
                         }
                     } else {
-                        moves.push([rank + offset, file + offset2]);
+                        if (!lookForChecks ||
+                            Board.getInstance().findChecks(this.colour, {
+                            oldCoords: [this.position.rank, this.position.file],
+                            newCoords: [rank + offset, file + offset2],
+                            ep: false,
+                            castle: false
+                        })) {
+                            moves.push([rank + offset, file + offset2]);
+                        }
                     }
                 }
             }

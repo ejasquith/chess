@@ -11,35 +11,99 @@ export default class King extends Piece {
         //ADD LOGIC FOR CHECKS
         if (rank + 1 <= 7 && 
             (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colour)) {
-            moves.push([rank + 1, file]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank + 1, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank + 1, file]);
+                }
         }
         if (rank + 1 <= 7 && file + 1 <= 7 && 
             (board[rank + 1][file + 1] === undefined || board[rank + 1][file + 1].colour !== this.colour)) {
-            moves.push([rank + 1, file + 1]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank + 1, file + 1],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank + 1, file + 1]);
+                }
         }
         if (rank + 1 <= 7 && file - 1 >= 0 &&
             (board[rank + 1][file - 1] === undefined || board[rank + 1][file - 1].colour !== this.colour)) {
-            moves.push([rank + 1, file - 1]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank + 1, file - 1],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank + 1, file - 1]);
+                }
         }
         if (rank - 1 >= 0 &&
             (board[rank - 1][file] === undefined || board[rank - 1][file].colour !== this.colour)) {
-            moves.push([rank - 1, file]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank + 1, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank - 1, file]);
+                }
         }
         if (rank - 1 >= 0 && file + 1 <= 7 &&
             (board[rank - 1][file + 1] === undefined || board[rank - 1][file + 1].colour !== this.colour)) {
-            moves.push([rank - 1, file + 1]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank + 1, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank - 1, file + 1]);
+                }
         }
         if (rank - 1 >= 0 && file - 1 >= 0 &&
             (board[rank - 1][file - 1] === undefined || board[rank - 1][file - 1].colour !== this.colour)) {
-            moves.push([rank - 1, file - 1]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank + 1, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank - 1, file - 1]);
+                }
         }
         if (file + 1 <= 7 &&
             (board[rank][file + 1] === undefined || board[rank][file + 1].colour !== this.colour)) {
-            moves.push([rank, file + 1]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank, file + 1],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank, file + 1]);
+                }
         }
         if (file - 1 >= 0 &&
             (board[rank][file - 1] === undefined || board[rank][file - 1].colour !== this.colour)) {
-            moves.push([rank, file - 1]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [rank, file],
+                    newCoords: [rank, file - 1],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank, file - 1]);
+                }
         }
 
         if (!this.hasMoved) {

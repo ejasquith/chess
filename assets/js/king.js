@@ -106,26 +106,61 @@ export default class King extends Piece {
                 }
         }
 
-        if (!this.hasMoved) {
+        // can only castle if king hasn't moved, and can't castle out of check
+        if (!this.hasMoved && (!lookForChecks || !Board.getInstance().findChecks(this.colour))) {
             if (board[rank][0] instanceof Rook && !board[rank][0].hasMoved) {
                 let flag = false;
-                for (let square of board[rank].slice(1,4)) {
-                    if (square !== undefined) {
+                let slice = board[rank].slice(1,4);
+                for (let square in slice) {
+                    // can't castle through check
+                    console.log(Board.getInstance().findChecks(this.colour, {
+                        oldCoords: [rank, file],
+                        newCoords: [rank, 1 + square],
+                        ep: false,
+                        castle: false
+                    }));
+                    if (slice[square] !== undefined || (!lookForChecks || 
+                        Board.getInstance().findChecks(this.colour, {
+                            oldCoords: [rank, file],
+                            newCoords: [rank, 1 + square],
+                            ep: false,
+                            castle: false
+                        }))) {
                         flag = true;
                     }
                 }
-                if (!flag) {
+                // can't castle into check
+                if (!flag &&
+                    (!lookForChecks || !Board.getInstance().findChecks(this.colour, {
+                        oldCoords: [rank, file],
+                        newCoords: [rank, file - 2],
+                        ep: false,
+                        castle: true
+                }))) {
                     moves.push([rank, file - 2]);
                 }
             }
             if (board[rank][7] instanceof Rook && !board[rank][7].hasMoved) {
                 let flag = false;
-                for (let square of board[rank].slice(5,7)) {
-                    if (square !== undefined) {
+                let slice = board[rank].slice(5,7);
+                for (let square in slice) {
+                    if (slice[square] !== undefined || (!lookForChecks ||
+                        Board.getInstance().findChecks(this.colour, {
+                            oldCoords: [rank, file],
+                            newCoords: [rank, 5 + square],
+                            ep: false,
+                            castle: false
+                        }))) {
                         flag = true;
                     }
                 }
-                if (!flag) {
+                if (!flag &&
+                    (!lookForChecks || !Board.getInstance().findChecks(this.colour, {
+                        oldCoords: [rank, file],
+                        newCoords: [rank, file + 2],
+                        ep: false,
+                        castle: true
+                }))) {
                     moves.push([rank, file + 2]);
                 }
             }

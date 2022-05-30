@@ -154,7 +154,7 @@ export default class Board {
             
         } else {
             let check = this.findChecks(piece.colour === 'white' ? 'black' : 'white');
-            let checkmate = this.hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white');
+            let checkmate = this.hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white') && check;
             Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
             Game.getInstance().updateTurn();
             callback(checkmate);

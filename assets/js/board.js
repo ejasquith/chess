@@ -153,23 +153,30 @@ export default class Board {
         }
     }
 
-    findChecks(colour, move) {
+    findChecks(colour, moveToCheck = undefined) {
         // before every move, will this put either king in check?
         // in getValidMove, if own king in check, not valid move
         // make temporary array with move made to check
-        
-        let board = this.array;
+
+        // deep copy board so that changes made will not affect original
+        let board = [];
+        for (let rank of this.array) {
+            board.push(rank.map((x) => x));
+        }
 
         let check = false;
 
+        console.log(moveToCheck);
         // if move passed, use modified board state
-        if (move !== undefined) {
-            let piece = board[move.oldCoords[0]][move.oldCoords[1]];
-            board[move.newCoords[0]][move.newCoords[1]] = piece;
-            if (move.ep) {
-                board[move.oldCoords[0]][move.newCoords[1]] = undefined;
+        if (moveToCheck !== undefined) {
+            let piece = board[moveToCheck.oldCoords[0]][moveToCheck.oldCoords[1]];
+            board[moveToCheck.newCoords[0]][moveToCheck.newCoords[1]] = piece;
+            if (moveToCheck.ep) {
+                board[moveToCheck.oldCoords[0]][moveToCheck.newCoords[1]] = undefined;
+            } else if (moveToCheck.castle) {
+                // move rook
             }
-            board[move.oldCoords[0]][move.oldCoords[1]] = undefined;
+            board[moveToCheck.oldCoords[0]][moveToCheck.oldCoords[1]] = undefined;
         }
 
         for (let rank of board) {
@@ -184,7 +191,6 @@ export default class Board {
                 }
             }
         }
-
         return check;
     }
 }

@@ -1,4 +1,5 @@
 import Piece from './piece.js';
+import Board from './board.js';
 
 export default class Bishop extends Piece {
     getValidMoves(board, lookForChecks = true) {
@@ -10,11 +11,27 @@ export default class Bishop extends Piece {
             file++;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    moves.push([rank, file]);
+                    if (!lookForChecks ||
+                        !Board.getInstance().findChecks(this.colour, {
+                        oldCoords: [this.position.rank, this.position.file],
+                        newCoords: [rank, file],
+                        ep: false,
+                        castle: false
+                    })) {
+                        moves.push([rank, file]);
+                    }
                 }
                 break;
             } else {
-                moves.push([rank, file]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [this.position.rank, this.position.file],
+                    newCoords: [rank, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank, file]);
+                }
             }
         }
 
@@ -25,11 +42,29 @@ export default class Bishop extends Piece {
             file--;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    moves.push([rank, file]);
+                    if (board[rank][file].colour !== this.colour) {
+                        if (!lookForChecks ||
+                            !Board.getInstance().findChecks(this.colour, {
+                            oldCoords: [this.position.rank, this.position.file],
+                            newCoords: [rank, file],
+                            ep: false,
+                            castle: false
+                        })) {
+                            moves.push([rank, file]);
+                        }
+                    }
                 }
                 break;
             } else {
-                moves.push([rank, file]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [this.position.rank, this.position.file],
+                    newCoords: [rank, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank, file]);
+                }
             }
         }
 
@@ -40,11 +75,27 @@ export default class Bishop extends Piece {
             file++;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    moves.push([rank, file]);
+                    if (!lookForChecks ||
+                        !Board.getInstance().findChecks(this.colour, {
+                        oldCoords: [this.position.rank, this.position.file],
+                        newCoords: [rank, file],
+                        ep: false,
+                        castle: false
+                    })) {
+                        moves.push([rank, file]);
+                    }
                 }
                 break;
             } else {
-                moves.push([rank, file]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [this.position.rank, this.position.file],
+                    newCoords: [rank, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank, file]);
+                }
             }
         }
 
@@ -55,11 +106,27 @@ export default class Bishop extends Piece {
             file--;
             if (board[rank][file] !== undefined) {
                 if (board[rank][file].colour !== this.colour) {
-                    moves.push([rank, file]);
+                    if (!lookForChecks ||
+                        !Board.getInstance().findChecks(this.colour, {
+                        oldCoords: [this.position.rank, this.position.file],
+                        newCoords: [rank, file],
+                        ep: false,
+                        castle: false
+                    })) {
+                        moves.push([rank, file]);
+                    }
                 }
                 break;
             } else {
-                moves.push([rank, file]);
+                if (!lookForChecks ||
+                    !Board.getInstance().findChecks(this.colour, {
+                    oldCoords: [this.position.rank, this.position.file],
+                    newCoords: [rank, file],
+                    ep: false,
+                    castle: false
+                })) {
+                    moves.push([rank, file]);
+                }
             }
         }
         return moves;

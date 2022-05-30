@@ -140,14 +140,18 @@ export default class Board {
                             Board.getInstance().array[newCoords[0]][newCoords[1]] = piece;
                             break;
                     }
-                    Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: this.findChecks(piece.colour === 'white' ? 'black' : 'white'), promotion: promotion});
+                    let check = Board.getInstance().findChecks(piece.colour === 'white' ? 'black' : 'white');
+                    let checkmate = Board.getInstance().hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white');
+                    Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
                     Game.getInstance().updateTurn();
                     callback();
                 })
             }
             
         } else {
-            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: this.findChecks(piece.colour === 'white' ? 'black' : 'white'), promotion: promotion});
+            let check = this.findChecks(piece.colour === 'white' ? 'black' : 'white');
+            let checkmate = this.hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white');
+            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
             Game.getInstance().updateTurn();
             callback();
         }
@@ -191,5 +195,27 @@ export default class Board {
             }
         }
         return check;
+    }
+
+    hasNoValidMoves(colour) {
+        let board = [];
+        for (let rank of this.array) {
+            board.push(rank.map((x) => x));
+        }
+
+        let noMoves = true;
+
+        for (let rank of board) {
+            for (let square of rank) {
+                if (square !== undefined && square.colour === colour) {
+                    let moves = square.getValidMoves(board);
+                    if (moves.length !== 0) {
+                        noMoves = false;
+                    }
+                }
+            }
+        }
+        console.log(noMoves);
+        return noMoves;
     }
 }

@@ -8,7 +8,6 @@ export default class King extends Piece {
         let rank = this.position.rank;
         let file = this.position.file;
 
-        //ADD LOGIC FOR CHECKS
         if (rank + 1 <= 7 && 
             (board[rank + 1][file] === undefined || board[rank + 1][file].colour !== this.colour)) {
                 if (!lookForChecks ||

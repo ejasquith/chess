@@ -113,6 +113,7 @@ function afterMove(checkmate) {
     initialiseHTML(Board.getInstance().array);
     updateHistory();
     
+    // logic for end of game
     if (checkmate) {    
         let colour = Game.getInstance().activePlayer === 'white' ? 'Black' : 'White';    
         alert(`${colour} wins by checkmate!`);

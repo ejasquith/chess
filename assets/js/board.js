@@ -154,7 +154,7 @@ export default class Board {
                     Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
                     Game.getInstance().updateTurn();
                     callback(checkmate);
-                })
+                });
             }
             
         } else {
@@ -167,10 +167,6 @@ export default class Board {
     }
 
     findChecks(colour, moveToCheck = undefined) {
-        // before every move, will this put either king in check?
-        // in getValidMove, if own king in check, not valid move
-        // make temporary array with move made to check
-
         // deep copy board so that changes made will not affect original
         let board = [];
         for (let rank of this.array) {

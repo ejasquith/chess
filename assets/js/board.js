@@ -182,6 +182,11 @@ export default class Board {
                 board[moveToCheck.oldCoords[0]][moveToCheck.newCoords[1]] = undefined;
             } else if (moveToCheck.castle) {
                 // move rook
+                let oldRookFile = newCoords[1] === 6 ? 7 : 0;
+                let newRookFile = newCoords[1] === 6 ? 5 : 3;
+                let rook = board[oldCoords[0]][oldRookFile];
+                board[oldCoords[0]][oldRookFile] = undefined;
+                board[oldCoords[0]][newRookFile] = rook;
             }
             board[moveToCheck.oldCoords[0]][moveToCheck.oldCoords[1]] = undefined;
         }

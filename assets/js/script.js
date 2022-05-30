@@ -112,8 +112,11 @@ function afterMove(checkmate) {
     Board.getInstance().selectedPiece = undefined;
     initialiseHTML(Board.getInstance().array);
     updateHistory();
-    if (checkmate) {
-        let colour = Game.getInstance().activePlayer === 'white' ? 'Black' : 'White';
+    
+    if (checkmate) {    
+        let colour = Game.getInstance().activePlayer === 'white' ? 'Black' : 'White';    
         alert(`${colour} wins by checkmate!`);
+    } else if (Board.getInstance().hasNoValidMoves(Game.getInstance().activePlayer)) {
+        alert('Draw by stalemate!');
     }
 }

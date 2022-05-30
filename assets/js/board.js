@@ -215,7 +215,6 @@ export default class Board {
                 }
             }
         }
-        console.log(noMoves);
         return noMoves;
     }
 }

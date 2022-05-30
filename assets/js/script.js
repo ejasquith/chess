@@ -18,7 +18,7 @@ function initialiseHTML(boardTemp) {
             node.style.backgroundColor = (rank % 2 === 0 ^ file % 2 === 0) ? 
                 node.style.backgroundColor = '#ebd7b2' : node.style.backgroundColor = '#ac8561';
             if (boardTemp[rank][file] !== undefined) {
-                node.style.backgroundImage = `url(../assets/images/${boardTemp[rank][file].constructor.name.toLowerCase()}-${boardTemp[rank][file].colour}.png)`;
+                node.style.backgroundImage = `url(assets/images/${boardTemp[rank][file].constructor.name.toLowerCase()}-${boardTemp[rank][file].colour}.png)`;
             }
             document.getElementById('board').appendChild(node);
         }

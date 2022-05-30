@@ -87,10 +87,14 @@ export default class Board {
             let rook = this.array[oldCoords[0]][7];
             this.array[oldCoords[0]][7] = undefined;
             this.array[oldCoords[0]][5] = rook;
+            rook.position.rank = oldCoords[0];
+            rook.position.file = 5;
         } else if (piece instanceof King && newCoords[1] === oldCoords[1] - 2) {
             let rook = this.array[oldCoords[0]][0];
             this.array[oldCoords[0]][0] = undefined;
             this.array[oldCoords[0]][3] = rook;
+            rook.position.rank = oldCoords[0];
+            rook.position.file = 3;
         }
 
         // pawn promotion

@@ -4,6 +4,7 @@ import Game from './game.js';
 document.addEventListener('DOMContentLoaded', function() {
     let board = Board.getInstance().array;
     initialiseHTML(board.reverse());
+    updateHistory();
 });
 
 function initialiseHTML(boardTemp) {
@@ -30,7 +31,6 @@ function initialiseHTML(boardTemp) {
 function updateHistory() {
     let historyArea = document.getElementById('game-history');
     historyArea.innerHTML = Game.getInstance().generateHistoryString();
-
 }
 
 function displayValidMoves(moves) {

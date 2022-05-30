@@ -113,16 +113,10 @@ export default class King extends Piece {
                 let slice = board[rank].slice(1,4);
                 for (let square in slice) {
                     // can't castle through check
-                    console.log(Board.getInstance().findChecks(this.colour, {
-                        oldCoords: [rank, file],
-                        newCoords: [rank, 1 + square],
-                        ep: false,
-                        castle: false
-                    }));
                     if (slice[square] !== undefined || (!lookForChecks || 
                         Board.getInstance().findChecks(this.colour, {
                             oldCoords: [rank, file],
-                            newCoords: [rank, 1 + square],
+                            newCoords: [rank, 1 + parseInt(square)],
                             ep: false,
                             castle: false
                         }))) {
@@ -147,7 +141,7 @@ export default class King extends Piece {
                     if (slice[square] !== undefined || (!lookForChecks ||
                         Board.getInstance().findChecks(this.colour, {
                             oldCoords: [rank, file],
-                            newCoords: [rank, 5 + square],
+                            newCoords: [rank, 5 + parseInt(square)],
                             ep: false,
                             castle: false
                         }))) {

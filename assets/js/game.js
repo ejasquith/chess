@@ -17,6 +17,11 @@ export default class Game {
         return Game.instance;
     }
 
+    static resetInstance() {
+        Game.instance = undefined;
+        return this.getInstance();
+    }
+
     static #getAlgebraicCoords(file, rank) {
         const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
         return letters[file] + (rank+1);

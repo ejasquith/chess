@@ -21,6 +21,11 @@ export default class Board {
         return Board.instance;
     }
 
+    static resetInstance() {
+        Board.instance = undefined;
+        return Board.getInstance();
+    }
+
     initialiseBoard() {
         for (let rank = 7; rank >= 0; rank--) {
             let rankArray = [];

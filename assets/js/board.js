@@ -144,7 +144,7 @@ export default class Board {
                     let checkmate = Board.getInstance().hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white');
                     Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
                     Game.getInstance().updateTurn();
-                    callback();
+                    callback(checkmate);
                 })
             }
             
@@ -153,7 +153,7 @@ export default class Board {
             let checkmate = this.hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white');
             Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
             Game.getInstance().updateTurn();
-            callback();
+            callback(checkmate);
         }
     }
 

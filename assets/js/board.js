@@ -140,14 +140,14 @@ export default class Board {
                             Board.getInstance().array[newCoords[0]][newCoords[1]] = piece;
                             break;
                     }
-                    Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
+                    Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: this.findChecks(piece.colour === 'white' ? 'black' : 'white'), promotion: promotion});
                     Game.getInstance().updateTurn();
                     callback();
                 })
             }
             
         } else {
-            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: false, promotion: promotion});
+            Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: false, check: this.findChecks(piece.colour === 'white' ? 'black' : 'white'), promotion: promotion});
             Game.getInstance().updateTurn();
             callback();
         }
@@ -166,7 +166,6 @@ export default class Board {
 
         let check = false;
 
-        console.log(moveToCheck);
         // if move passed, use modified board state
         if (moveToCheck !== undefined) {
             let piece = board[moveToCheck.oldCoords[0]][moveToCheck.oldCoords[1]];

@@ -18,8 +18,7 @@ body {
     background-position: center;
 }
 
-#promotion-modal {
-    display: none;
+.modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -27,4 +26,10 @@ body {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
     z-index: 1;
+}
+.open {
+    display: block;
+}
+.closed {
+    display: none;
 }

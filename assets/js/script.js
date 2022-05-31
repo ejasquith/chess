@@ -5,6 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
     let board = Board.getInstance().array;
     initialiseHTML(board.reverse());
     updateHistory();
+
+    document.getElementById('how-to-play-btn').addEventListener('click', function() {
+        let modal = document.getElementById('how-to-play');
+        if (modal.classList.contains('closed')) {
+            modal.classList.remove('closed');
+            modal.classList.add('open');
+        }
+    })
+
+    document.getElementById('close-htp-btn').addEventListener('click', function() {
+        let modal = document.getElementById('how-to-play');
+        if (modal.classList.contains('open')) {
+            modal.classList.remove('open');
+            modal.classList.add('closed');
+        }
+    })
 });
 
 function initialiseHTML(boardTemp) {

@@ -15,73 +15,77 @@
         <button class="btn" id="how-to-play-btn">How to Play</button>
     </header>
 
-    <div class="modal closed" id="promotion-modal">
+    <div class="modal-overlay closed">
+        <div class="modal closed" id="promotion-modal">
+        </div>
     </div>
 
-    <div class="modal closed" id="how-to-play">
-        <button class="btn" id="close-htp-btn">Close</button>
-        <h1>How to Play</h1>
-        <p>Chess is a game that's quick to learn and difficult to master. To help you along your journey, take a look at the basic rules before jumping into a game!</p>
+    <div class="modal-overlay closed">
+        <div class="modal closed" id="how-to-play">
+            <button class="btn" id="close-htp-btn">Close</button>
+            <h1>How to Play</h1>
+            <p>Chess is a game that's quick to learn and difficult to master. To help you along your journey, take a look at the basic rules before jumping into a game!</p>
+            
+            <h2>How to Move</h2>
+            
+            <h3>The King</h3>
+            <p>The King is your most important piece, but also one of the weakest. It can move 1 square in any direction (diagonally, horizontally, or vertically).</p>
+            <p>The goal of chess is to force your opponent into a position where their king can't avoid being captured - so you should defend it at all costs!</p>
+            <p>The King cannot move into check (where he could be captured by an enemy piece). When an enemy piece attacks the king, we say he's in check, and your next move must deal with the check somehow (by moving the king out of danger, capturing the checking piece, or blocking the check with another of your pieces).</p>
+            <p>If you can't deal with the check, that's called checkmate, and you lose the game.</p>
+
+            <h3>The Queen</h3>
+            <p>The Queen is the most powerful piece you have. It can move as many squares as it wants in any direction, but can't jump over your own pieces.</p>
+
+            <h3>The Rook</h3>
+            <p>The Rook can move as many squares as you want, but unlike the Queen it can only move horizontally and vertically.</p>
+            
+            <h3>The Bishop</h3>
+            <p>The Bishop can also move as many squares as you want, but only diagonally. This means that a Bishop can only ever be on the colour of square it started on.</p>
+
+            <h3>The Knight</h3>
+            <p>The Knight can be a tricky one, especially for beginners. It can move in an "L" shape (one square horizontally and one square vertically, or vice versa), and can also jump over your own pieces.</p>
+
+            <h3>The Pawns</h3>
+            <p>The pawns are also a special case. They can only move forward one square, but on their first move they can move two squares if you want.</p>
+            <p>They're also the only pieces that don't capture enemy pieces in the same way they move. They can only capture pieces that are one square diagonally in front of them.</p>
+            
+            <h2>Special Rules</h2>
+            <p>There are three special rules in chess that you need to learn.</p>
+            
+            <h3>Promotion</h3>
+            <p>If a pawn makes it to the very last row on the board, they can promote! That means you replace the pawn with a Queen, Bishop, Rook, or Knight (your choice, but as the Queen is the most powerful piece it's usually the best option!)</p>
+
+            <h3>Castling</h3>
+            <p>Castling is the only way you can move two pieces at once. You can move your King two squares to the side, and move the Rook from that side next to the King, on the opposite side that it moved.</p>
+            <p>There's a few conditions for castling to be allowed:</p>
+            <ul>
+                <li>The King can't have moved before;</li>
+                <li>The Rook can't have moved before;</li>
+                <li>There can't be any pieces between the King and Rook;</li>
+                <li>The King can't castle out of, through, or into check.</li>
+            </ul>
+
+            <h3>En Passant</h3>
+            <p>En passant (French for "in passing") is a special ability that pawns have. If an enemy pawn moves two squares for it's first move and it lands next to your own pawn, the pawn can capture it as if it only moved one square.</p>
+            <p>This can only be done immediately after the enemy pawn moves - if you make another move first, en passant is no longer an option.</p>
         
-        <h2>How to Move</h2>
+            <h2>The Rest</h2>
+
+            <h3>Who goes first?</h3>
+            <p>In chess, the player with the white pieces always goes first, and players alternate from there. If you're playing the same person multiple times, it's customary to swap colours after each game.</p>
         
-        <h3>The King</h3>
-        <p>The King is your most important piece, but also one of the weakest. It can move 1 square in any direction (diagonally, horizontally, or vertically).</p>
-        <p>The goal of chess is to force your opponent into a position where their king can't avoid being captured - so you should defend it at all costs!</p>
-        <p>The King cannot move into check (where he could be captured by an enemy piece). When an enemy piece attacks the king, we say he's in check, and your next move must deal with the check somehow (by moving the king out of danger, capturing the checking piece, or blocking the check with another of your pieces).</p>
-        <p>If you can't deal with the check, that's called checkmate, and you lose the game.</p>
+            <h3>How does the game end?</h3>
+            <p>We've already talked about checkmate, where one player's king can't avoid being captured. There's also "stalemate", which is similar to checkmate but the king is not actively in check and the player has no other available moves. This ends the game in a draw.</p>
+            <p>The players can also agree to a draw at any time and simply stop playing.</p>
+            <p>If there aren't enough pieces on the board that a player could force checkmate (eg. a King vs. a King and a Bishop), the game is a draw.</p>
+            <p>If 50 moves have gone by without either player moving a pawn or capturing a piece, the game is a draw.</p>
+            <p>If the position on the board has been repeated three times (although not necessarily in a row), the game is a draw.</p>
 
-        <h3>The Queen</h3>
-        <p>The Queen is the most powerful piece you have. It can move as many squares as it wants in any direction, but can't jump over your own pieces.</p>
-
-        <h3>The Rook</h3>
-        <p>The Rook can move as many squares as you want, but unlike the Queen it can only move horizontally and vertically.</p>
-        
-        <h3>The Bishop</h3>
-        <p>The Bishop can also move as many squares as you want, but only diagonally. This means that a Bishop can only ever be on the colour of square it started on.</p>
-
-        <h3>The Knight</h3>
-        <p>The Knight can be a tricky one, especially for beginners. It can move in an "L" shape (one square horizontally and one square vertically, or vice versa), and can also jump over your own pieces.</p>
-
-        <h3>The Pawns</h3>
-        <p>The pawns are also a special case. They can only move forward one square, but on their first move they can move two squares if you want.</p>
-        <p>They're also the only pieces that don't capture enemy pieces in the same way they move. They can only capture pieces that are one square diagonally in front of them.</p>
-        
-        <h2>Special Rules</h2>
-        <p>There are three special rules in chess that you need to learn.</p>
-        
-        <h3>Promotion</h3>
-        <p>If a pawn makes it to the very last row on the board, they can promote! That means you replace the pawn with a Queen, Bishop, Rook, or Knight (your choice, but as the Queen is the most powerful piece it's usually the best option!)</p>
-
-        <h3>Castling</h3>
-        <p>Castling is the only way you can move two pieces at once. You can move your King two squares to the side, and move the Rook from that side next to the King, on the opposite side that it moved.</p>
-        <p>There's a few conditions for castling to be allowed:</p>
-        <ul>
-            <li>The King can't have moved before;</li>
-            <li>The Rook can't have moved before;</li>
-            <li>There can't be any pieces between the King and Rook;</li>
-            <li>The King can't castle out of, through, or into check.</li>
-        </ul>
-
-        <h3>En Passant</h3>
-        <p>En passant (French for "in passing") is a special ability that pawns have. If an enemy pawn moves two squares for it's first move and it lands next to your own pawn, the pawn can capture it as if it only moved one square.</p>
-        <p>This can only be done immediately after the enemy pawn moves - if you make another move first, en passant is no longer an option.</p>
-    
-        <h2>The Rest</h2>
-
-        <h3>Who goes first?</h3>
-        <p>In chess, the player with the white pieces always goes first, and players alternate from there. If you're playing the same person multiple times, it's customary to swap colours after each game.</p>
-    
-        <h3>How does the game end?</h3>
-        <p>We've already talked about checkmate, where one player's king can't avoid being captured. There's also "stalemate", which is similar to checkmate but the king is not actively in check and the player has no other available moves. This ends the game in a draw.</p>
-        <p>The players can also agree to a draw at any time and simply stop playing.</p>
-        <p>If there aren't enough pieces on the board that a player could force checkmate (eg. a King vs. a King and a Bishop), the game is a draw.</p>
-        <p>If 50 moves have gone by without either player moving a pawn or capturing a piece, the game is a draw.</p>
-        <p>If the position on the board has been repeated three times (although not necessarily in a row), the game is a draw.</p>
-
-        <h3>What else is there to know?</h3>
-        <p>Plenty! The depth of theory in chess is seemingly infinite. If you want to learn some basic stratgies and tactics, you can check out <a href="https://www.youtube.com/watch?v=yv7_0svOlQU" target="_blank">this excellent video by Chess.com.</a></p>
-        <p>Or, if you want to learn some openings (the first few moves of the game), take a look at <a href="https://www.chess.com/article/view/the-best-chess-openings-for-beginners" target="_blank">this article on Chess.com.</a></p>
+            <h3>What else is there to know?</h3>
+            <p>Plenty! The depth of theory in chess is seemingly infinite. If you want to learn some basic stratgies and tactics, you can check out <a href="https://www.youtube.com/watch?v=yv7_0svOlQU" target="_blank">this excellent video by Chess.com.</a></p>
+            <p>Or, if you want to learn some openings (the first few moves of the game), take a look at <a href="https://www.chess.com/article/view/the-best-chess-openings-for-beginners" target="_blank">this article on Chess.com.</a></p>
+        </div>
     </div>
 
     <div id="board"></div>
@@ -91,7 +95,7 @@
     <div id="history-controls">
         History controls
     </div>
-    
+
     <script src="assets/js/script.js" type="module"></script>
 </body>
 </html>

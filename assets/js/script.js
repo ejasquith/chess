@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal.classList.contains('closed')) {
             modal.classList.remove('closed');
             modal.classList.add('open');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('closed');
+            overlay.classList.add('open');
         }
     })
 
@@ -19,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal.classList.contains('open')) {
             modal.classList.remove('open');
             modal.classList.add('closed');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('open');
+            overlay.classList.add('closed');
         }
     })
 });

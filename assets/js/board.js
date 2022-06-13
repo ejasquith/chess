@@ -108,9 +108,15 @@ export default class Board {
             promotion = true;
             // display modal
             let modal = document.getElementById('promotion-modal');
-            modal.innerHTML = '<p>Choose piece to promote to:</p>';
 
-            modal.style.display = 'block';
+            modal.classList.remove('closed');
+            modal.classList.add('open');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('closed');
+            overlay.classList.add('open');            
+
+            modal.innerHTML = '<p>Choose piece to promote to:</p>';
 
             let options = ['Queen', 'Rook', 'Bishop', 'Knight'];
             for (let option of options) {
@@ -124,7 +130,13 @@ export default class Board {
             let promotionButtons = document.getElementsByClassName('promotion-btn');
             for (let btn of promotionButtons) {
                 btn.addEventListener('click', function(event) {
-                    modal.style.display = 'none';
+                    modal.classList.remove('open');
+                    modal.classList.add('closed');
+
+                    overlay.classList.remove('open');
+                    overlay.classList.add('closed');
+
+
                     let colour = newCoords[0] === 7 ? 'white' : 'black';
                     // switch for piece selection
                     switch (event.currentTarget.id) {

@@ -3,23 +3,6 @@ body {
     padding: 0;
 }
 
-header {
-    height: 100px;
-    line-height: 100px;
-    background-color: red;
-}
-#page-header {
-    margin-top: 0;
-}
-#header-image {
-    width: 100px;
-    height: 100px;
-}
-
-header * {
-    display: inline-block;
-}
-
 #board {
     margin: 0 auto;
     display: grid;

@@ -3,6 +3,18 @@ body {
     padding: 0;
 }
 
+header {
+    height: 100px;
+    width: 100%;
+    background-color: red;
+}
+
+#header-text {
+}
+#header-text * {
+    display: inline-block;
+}
+
 #board {
     margin: 0 auto;
     display: grid;

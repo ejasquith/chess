@@ -109,8 +109,16 @@ export default class Game {
     }
 
     checkThreefoldRepetition() {
+        let moves = [];
+        let boards = [];
+        
         for (let move of this.history) {
-            
+            moves.add(move);
+            boards.add(Board.generateBoardFromHistory(moves));
+        }
+
+        for (let board of boards) {
+            // compare
         }
     }
 }

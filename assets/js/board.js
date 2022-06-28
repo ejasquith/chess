@@ -240,12 +240,16 @@ export default class Board {
         return noMoves;
     }
 
-    generateBoardFromMoves(moves) {
+    generateFEN() {
+        
+    }    
+
+    static generateBoardFromMoves(moves) {
         let board = new Board();
         board.initialiseBoard();
         for (let move of moves) {
             // edit board
         }
-        return board;
+        return board.array;
     }
 }

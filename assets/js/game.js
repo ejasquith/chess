@@ -97,4 +97,14 @@ export default class Game {
             this.activePlayer = 'black';
         }
     }
+
+    check50Moves() {
+        let result = true;
+        for (let move of this.history.slice(-50)) {
+            if (move.piece.constructor.name === 'Pawn' || move.capturedPiece !== undefined) {
+                result = false;
+            }
+        }
+        return result;
+    }
 }

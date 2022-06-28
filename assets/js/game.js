@@ -19,7 +19,7 @@ export default class Game {
 
     static resetInstance() {
         Game.instance = undefined;
-        return this.getInstance();
+        return Game.getInstance();
     }
 
     static #getAlgebraicCoords(file, rank) {

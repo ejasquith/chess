@@ -239,4 +239,13 @@ export default class Board {
         }
         return noMoves;
     }
+
+    generateBoardFromMoves(moves) {
+        let board = new Board();
+        board.initialiseBoard();
+        for (let move of moves) {
+            // edit board
+        }
+        return board;
+    }
 }

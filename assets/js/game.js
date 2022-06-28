@@ -107,4 +107,10 @@ export default class Game {
         }
         return result;
     }
+
+    checkThreefoldRepetition() {
+        for (let move of this.history) {
+            
+        }
+    }
 }

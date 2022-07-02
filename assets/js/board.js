@@ -241,6 +241,51 @@ export default class Board {
         return noMoves;
     }
 
+    checkInsufficientMaterial() {
+        let whitePieces = [];
+        let blackPieces = [];
+
+        let result = false;
+
+        for (let file of this.array) {
+            for (let square of file) {
+                if (square !== undefined) {
+                    if (square.colour === 'white') {
+                        whitePieces.push(square.constructor.name);
+                    } else if (square.colour === 'black') {
+                        blackPieces.push(square.constructor.name);
+                    }
+                }
+            }
+        }
+
+        // if length is 1, only king remains
+        if (whitePieces.length === 1 && blackPieces.length === 1) {
+            result = true;
+        } else if (whitePieces.length === 1) {
+            if (blackPieces.length === 2) {
+                if (blackPieces.includes('Knight') || blackPieces.includes('Bishop')) {
+                    result = true;
+                }
+            } else if (blackPieces.length === 3) {
+                if (blackPieces.filter(x => x === 'Knight').length === 2) {
+                    result = true;
+                }
+            }
+
+        } else if (blackPieces.length === 1) {
+            if (whitePieces.length === 2) {
+                if (whitePieces.includes('Knight') || whitePieces.includes('Bishop')) {
+                    result = true;
+                }
+            } else if (whitePieces.length === 3) {
+                if (whitePieces.filter(x => x === 'Knight').length === 2) {
+                    result = true;
+                }
+            }
+        }
+    }
+
     // Forsyth-Edwards Notation
     // Does not record all the data usually used in FEN, only what is needed to represent the pieces on the board
     generateFEN() {

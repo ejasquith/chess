@@ -245,7 +245,7 @@ export default class Board {
     // Does not record all the data usually used in FEN, only what is needed to represent the pieces on the board
     generateFEN() {
         let FENString = '';
-        for (let file of array) {
+        for (let file of this.array) {
             let fileString = '';
             let emptySquares = 0;
             for (let square of file) {

@@ -163,7 +163,7 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
-    } else if (Game.checkThreeFoldRepetition) {
+    } else if (Game.checkThreefoldRepetition) {
         alert('Draw by threefold repetition!');
         Board.resetInstance();
         Game.resetInstance();

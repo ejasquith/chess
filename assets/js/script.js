@@ -171,5 +171,13 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
+    } else if (Game.getInstance().checkInsufficientMaterial()) {
+        alert('Draw by insufficient material!');
+        Board.resetInstance();
+        Game.resetInstance();
+        document.dispatchEvent(new Event("DOMContentLoaded", {
+            bubbles: true,
+            cancelable: true
+        }));
     }
 }

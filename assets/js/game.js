@@ -103,7 +103,7 @@ export default class Game {
         if (this.history.length <= 50) {
             return false;
         }
-        
+
         let result = true;
         for (let move of this.history.slice(-50)) {
             if (move.piece.constructor.name === 'Pawn' || move.capturedPiece !== undefined) {
@@ -114,9 +114,9 @@ export default class Game {
     }
 
     checkThreefoldRepetition() {
-        flag = false;
+        let flag = false;
         for (let FEN of this.FENHistory) {
-            if (FENHistory.filter(x => x === FEN).length >= 3) {
+            if (this.FENHistory.filter(x => x === FEN).length >= 3) {
                 flag = true;
                 break;
             }

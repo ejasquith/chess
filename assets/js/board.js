@@ -241,7 +241,24 @@ export default class Board {
     }
 
     generateFEN() {
-        
+        let FENString = '';
+        for (let file of array) {
+            let fileString = '';
+            let emptySquares = 0;
+            for (let square of file) {
+                if (square === undefined) {
+                    emptySquares++;
+                } else {
+                    if (emptySquares !== 0) {
+                        fileString += emptySquares;
+                    }
+                    emptySquares = 0;
+                    fileString += square.colour === 'black' ? square.constructor.name[0] : square.constructor.name.toUpperCase()[0];
+                }
+            }
+            FENString += fileString + '/';
+        }
+        return FENString;
     }    
 
     static generateBoardFromMoves(moves) {

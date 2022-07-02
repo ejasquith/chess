@@ -174,6 +174,7 @@ export default class Board {
             let checkmate = this.hasNoValidMoves(piece.colour === 'white' ? 'black' : 'white') && check;
             Game.getInstance().updateHistory({piece: piece, oldCoords: oldCoords, newCoords: newCoords, capturedPiece: capturedPiece, checkmate: checkmate, check: check, promotion: promotion});
             Game.getInstance().updateTurn();
+            Game.getInstance().FENHistory.push(this.generateFEN());
             callback(checkmate);
         }
     }
@@ -240,6 +241,8 @@ export default class Board {
         return noMoves;
     }
 
+    // Forsyth-Edwards Notation
+    // Does not record all the data usually used in FEN, only what is needed to represent the pieces on the board
     generateFEN() {
         let FENString = '';
         for (let file of array) {
@@ -261,12 +264,12 @@ export default class Board {
         return FENString;
     }    
 
-    static generateBoardFromMoves(moves) {
-        let board = new Board();
-        board.initialiseBoard();
-        for (let move of moves) {
-            // edit board
-        }
-        return board.array;
-    }
+    // static generateFENFromMoves(moves) {
+    //     let board = new Board();
+    //     board.initialiseBoard();
+    //     for (let move of moves) {
+    //         // edit board
+    //     }
+    //     return board.generateFEN();
+    // }
 }

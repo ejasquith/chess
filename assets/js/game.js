@@ -8,6 +8,7 @@ export default class Game {
         this.whiteInCheck = false;
         this.turn = 1;
         this.history = [];
+        this.FENHistory = [];
     }
 
     static getInstance() {

@@ -256,12 +256,18 @@ export default class Board {
                         fileString += emptySquares;
                     }
                     emptySquares = 0;
-                    fileString += square.colour === 'black' ? square.constructor.name[0] : square.constructor.name.toUpperCase()[0];
+                    let pieceLetter = square.constructor.name === 'Knight' ? 'N' : square.constructor.name[0];
+                    fileString += square.colour === 'black' ? pieceLetter : pieceLetter.toLowerCase();
                 }
+            }
+            // If last square is empty, above condition will not catch
+            if (emptySquares !== 0) {
+                fileString += emptySquares;
             }
             FENString += fileString + '/';
         }
-        return FENString;
+        // Removes trailing /
+        return FENString.slice(0, -1);
     }    
 
     // static generateFENFromMoves(moves) {

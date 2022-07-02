@@ -110,16 +110,13 @@ export default class Game {
     }
 
     checkThreefoldRepetition() {
-        let moves = [];
-        let boards = [];
-        
-        for (let move of this.history) {
-            moves.add(move);
-            boards.add(Board.generateBoardFromHistory(moves));
+        flag = false;
+        for (let FEN of this.FENHistory) {
+            if (FENHistory.filter(x => x === FEN).length >= 3) {
+                flag = true;
+                break;
+            }
         }
-
-        for (let board of boards) {
-            // compare
-        }
+        return flag;
     }
 }

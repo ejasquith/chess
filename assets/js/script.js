@@ -155,5 +155,21 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
+    } else if (Game.check50Moves()) {
+        alert('Draw by 50 move rule!');
+        Board.resetInstance();
+        Game.resetInstance();
+        document.dispatchEvent(new Event("DOMContentLoaded", {
+            bubbles: true,
+            cancelable: true
+        }));
+    } else if (Game.checkThreeFoldRepetition) {
+        alert('Draw by threefold repetition!');
+        Board.resetInstance();
+        Game.resetInstance();
+        document.dispatchEvent(new Event("DOMContentLoaded", {
+            bubbles: true,
+            cancelable: true
+        }));
     }
 }

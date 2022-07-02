@@ -100,6 +100,10 @@ export default class Game {
     }
 
     check50Moves() {
+        if (this.history.length <= 50) {
+            return false;
+        }
+        
         let result = true;
         for (let move of this.history.slice(-50)) {
             if (move.piece.constructor.name === 'Pawn' || move.capturedPiece !== undefined) {

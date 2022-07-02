@@ -171,7 +171,7 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
-    } else if (Game.getInstance().checkInsufficientMaterial()) {
+    } else if (Board.getInstance().checkInsufficientMaterial()) {
         alert('Draw by insufficient material!');
         Board.resetInstance();
         Game.resetInstance();

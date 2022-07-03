@@ -264,10 +264,12 @@ export default class Board {
             result = true;
         } else if (whitePieces.length === 1) {
             if (blackPieces.length === 2) {
+                // cannot mate with 1 minor piece
                 if (blackPieces.includes('Knight') || blackPieces.includes('Bishop')) {
                     result = true;
                 }
             } else if (blackPieces.length === 3) {
+                // cannot mate with 2 knights
                 if (blackPieces.filter(x => x === 'Knight').length === 2) {
                     result = true;
                 }

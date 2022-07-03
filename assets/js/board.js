@@ -314,13 +314,4 @@ export default class Board {
         // Removes trailing /
         return FENString.slice(0, -1);
     }    
-
-    // static generateFENFromMoves(moves) {
-    //     let board = new Board();
-    //     board.initialiseBoard();
-    //     for (let move of moves) {
-    //         // edit board
-    //     }
-    //     return board.generateFEN();
-    // }
 }

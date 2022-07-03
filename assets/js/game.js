@@ -114,13 +114,13 @@ export default class Game {
     }
 
     checkThreefoldRepetition() {
-        let flag = false;
+        let result = false;
         for (let FEN of this.FENHistory) {
             if (this.FENHistory.filter(x => x === FEN).length >= 3) {
-                flag = true;
+                result = true;
                 break;
             }
         }
-        return flag;
+        return result;
     }
 }

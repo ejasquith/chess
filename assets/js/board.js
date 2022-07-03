@@ -241,7 +241,7 @@ export default class Board {
         return noMoves;
     }
 
-    checkInsufficientMaterial() {
+    checkDrawByInsufficientMaterial() {
         let whitePieces = [];
         let blackPieces = [];
 

@@ -155,7 +155,7 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
-    } else if (Game.getInstance().check50Moves()) {
+    } else if (Game.getInstance().checkDrawBy50Moves()) {
         alert('Draw by 50 move rule!');
         Board.resetInstance();
         Game.resetInstance();
@@ -163,7 +163,7 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
-    } else if (Game.getInstance().checkThreefoldRepetition()) {
+    } else if (Game.getInstance().checkDrawByThreefoldRepetition()) {
         alert('Draw by threefold repetition!');
         Board.resetInstance();
         Game.resetInstance();
@@ -171,7 +171,7 @@ function afterMove(checkmate) {
             bubbles: true,
             cancelable: true
         }));
-    } else if (Board.getInstance().checkInsufficientMaterial()) {
+    } else if (Board.getInstance().checkDrawByInsufficientMaterial()) {
         alert('Draw by insufficient material!');
         Board.resetInstance();
         Game.resetInstance();

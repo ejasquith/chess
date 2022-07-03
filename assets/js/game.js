@@ -99,7 +99,7 @@ export default class Game {
         }
     }
 
-    check50Moves() {
+    checkDrawBy50Moves() {
         if (this.history.length <= 50) {
             return false;
         }
@@ -113,7 +113,7 @@ export default class Game {
         return result;
     }
 
-    checkThreefoldRepetition() {
+    checkDrawByThreefoldRepetition() {
         let result = false;
         for (let FEN of this.FENHistory) {
             if (this.FENHistory.filter(x => x === FEN).length >= 3) {

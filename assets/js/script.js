@@ -37,6 +37,29 @@ function startNewGame() {
     updateHistory();
 }
 
+function updateScore(result) {
+    let whiteScore = parseFloat(document.getElementById('white-score').innerHTML);
+    let blackScore = parseFloat(document.getElementById('black-score').innerHTML);
+
+    switch (result.toLowerCase()) {
+        case 'white':
+            whiteScore++;
+            break;
+        case 'black':
+            blackScore++;
+            break;
+        case 'draw':
+            whiteScore += 0.5;
+            blackScore += 0.5;
+            break;
+        default:
+            throw 'Error: unrecognised value for game result';
+    }
+
+    document.getElementById('white-score').innerHTML = whiteScore;
+    document.getElementById('black-score').innerHTML = blackScore;
+}
+
 function initialiseHTML(boardTemp) {
     document.getElementById('board').innerHTML = '';
     for (let rank = 7; rank >= 0; rank--) { 
@@ -147,18 +170,23 @@ function afterMove(checkmate) {
     if (checkmate) {    
         let colour = Game.getInstance().activePlayer === 'white' ? 'Black' : 'White';    
         alert(`${colour} wins by checkmate!`);
+        updateScore(colour);
         startNewGame();
     } else if (Board.getInstance().hasNoValidMoves(Game.getInstance().activePlayer)) {
         alert('Draw by stalemate!');
+        updateScore('draw');
         startNewGame();
     } else if (Game.getInstance().checkDrawBy50Moves()) {
         alert('Draw by 50 move rule!');
+        updateScore('draw');
         startNewGame();
     } else if (Game.getInstance().checkDrawByThreefoldRepetition()) {
         alert('Draw by threefold repetition!');
+        updateScore('draw');
         startNewGame();
     } else if (Board.getInstance().checkDrawByInsufficientMaterial()) {
         alert('Draw by insufficient material!');
+        updateScore('draw');
         startNewGame();
     }
 }

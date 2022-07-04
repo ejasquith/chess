@@ -2,9 +2,7 @@ import Board from './board.js';
 import Game from './game.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    let board = Board.getInstance().array;
-    initialiseHTML(board.reverse());
-    updateHistory();
+    startNewGame();
 
     document.getElementById('how-to-play-btn').addEventListener('click', function() {
         let modal = document.getElementById('how-to-play');
@@ -30,6 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 });
+
+function startNewGame() {
+    Board.resetInstance();
+    Game.resetInstance();
+    let board = Board.getInstance().array;
+    initialiseHTML(board.reverse());
+    updateHistory();
+}
 
 function initialiseHTML(boardTemp) {
     document.getElementById('board').innerHTML = '';
@@ -141,43 +147,18 @@ function afterMove(checkmate) {
     if (checkmate) {    
         let colour = Game.getInstance().activePlayer === 'white' ? 'Black' : 'White';    
         alert(`${colour} wins by checkmate!`);
-        Board.resetInstance();
-        Game.resetInstance();
-        document.dispatchEvent(new Event("DOMContentLoaded", {
-            bubbles: true,
-            cancelable: true
-        }));
+        startNewGame();
     } else if (Board.getInstance().hasNoValidMoves(Game.getInstance().activePlayer)) {
         alert('Draw by stalemate!');
-        Board.resetInstance();
-        Game.resetInstance();
-        document.dispatchEvent(new Event("DOMContentLoaded", {
-            bubbles: true,
-            cancelable: true
-        }));
+        startNewGame();
     } else if (Game.getInstance().checkDrawBy50Moves()) {
         alert('Draw by 50 move rule!');
-        Board.resetInstance();
-        Game.resetInstance();
-        document.dispatchEvent(new Event("DOMContentLoaded", {
-            bubbles: true,
-            cancelable: true
-        }));
+        startNewGame();
     } else if (Game.getInstance().checkDrawByThreefoldRepetition()) {
         alert('Draw by threefold repetition!');
-        Board.resetInstance();
-        Game.resetInstance();
-        document.dispatchEvent(new Event("DOMContentLoaded", {
-            bubbles: true,
-            cancelable: true
-        }));
+        startNewGame();
     } else if (Board.getInstance().checkDrawByInsufficientMaterial()) {
         alert('Draw by insufficient material!');
-        Board.resetInstance();
-        Game.resetInstance();
-        document.dispatchEvent(new Event("DOMContentLoaded", {
-            bubbles: true,
-            cancelable: true
-        }));
+        startNewGame();
     }
 }

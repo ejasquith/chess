@@ -1,13 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #636363;
+    background-color: #565566;
 }
 
 header {
     height: 100px;
     width: 100%;
-    background-color: red;
+    background-color: #333c46;
+    color: white;
     font-size: 2rem;
     line-height:100%;
     text-align: center;
@@ -60,7 +61,7 @@ main {
     margin: 10px auto 0 auto;
     width: 90%;
     height: 200px;
-    background-color: #4d4e4f;
+    background-color: #333c46;
     border-radius: 5px;
     color: white;
     overflow: scroll;

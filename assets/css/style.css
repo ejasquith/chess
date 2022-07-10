@@ -26,13 +26,6 @@ header {
     display: flex;
 }
 
-/* #header-icon {
-    float: left;
-    font-size: 200%;
-    width: 20%;
-    height: 100%;
-    line-height: 100%;
-} */
 #header-btns {
     float: right;
     width: 80%;

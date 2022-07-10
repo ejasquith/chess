@@ -119,6 +119,11 @@ main {
     font-size: 150%;
 }
 
+#promotion-modal {
+    max-width: 299px;
+    min-height: 299px;
+}
+
 #promotion-btn-container {
     flex-wrap: wrap;
 }

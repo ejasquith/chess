@@ -166,8 +166,6 @@ main {
     grid-template-columns: 50% 50%;
     width: 100px;
     height: 100px;
-    /* margin: 0 auto;
-    padding-bottom: 10px; */
 }
 
 #blue-btn .dark {
@@ -205,8 +203,12 @@ main {
         padding: 20px;
     }
 
+    #board {
+        margin: 0;
+    }
+
     #info {
-        height: 60vh;
+        height: 600px;
         width: 40%;
         max-height: 100%;
         margin: 0 auto;

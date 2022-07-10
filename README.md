@@ -61,3 +61,17 @@ I decided to use a dark colour theme for this project, using blue-greys (#565566
 ## Fonts
 
 The font I will be using is IBM Plex Sans, with IBM Plex Mono used for displaying the game PGN (portable game notation, how the history of the game will be displayed). IBM Plex Sans is a simple sans serif font with a slightly modern feel to it, which matches well with the dark colour scheme I've chosen. I'm using a monospace font for the PGN because it makes it easier to read and parse long strings of non-english text.
+
+# Development Stage
+
+## Game Logic
+
+Being a chess client, the most important part of the project was the game logic. This included setting up a digital representation of the board, finding valid moves for each different type of piece, and determing game end conditions like checkmate, stalemate, and other draw conditions.  
+
+## Code Architecture
+
+The board was represented by a two-dimensional array, with piece objects inside that array (and undefined values to represent empty squares). The project is object oriented, with each different piece class (eg. King, Queen) inheriting from a generic Piece class. The board and game itself are also objects.  
+
+Part way through the project, I decided to implement an MVC (model-view-controller) architecture. The benefits of this architecture lie in the separation of logic - how the program implements the game is kept entirely separate from how it is displayed in the browser. This makes the code inherently reusable - it's essentially a plug & play system, where the backend can be plugged into any front end implementation (to give an out-there example, it could work with a VR game).  
+
+This however was never implemented fully - while the logic is mostly separated, there is some view logic inside what should be the controller. Had I had more time or were to restart the project, I would keep the MVC architecture in mind from the start to avoid this.

@@ -1,5 +1,3 @@
-import Board from './board.js';
-
 export default class Game {
     static instance = undefined;
     constructor() {
@@ -23,7 +21,7 @@ export default class Game {
         return Game.getInstance();
     }
 
-    static #getAlgebraicCoords(file, rank) {
+    static getAlgebraicCoords(file, rank) {
         const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
         return letters[file] + (rank+1);
     }
@@ -49,13 +47,13 @@ export default class Game {
             } else {
                 if (move.promotion) {
                     if (move.capturedPiece !== undefined) {
-                        moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
+                        moveString += Game.getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
                     }
                 } else {
                     switch (move.piece.constructor.name) {
                         case 'Pawn':
                             if (move.capturedPiece !== undefined) {
-                                moveString += Game.#getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
+                                moveString += Game.getAlgebraicCoords(move.oldCoords[1], move.oldCoords[0]).charAt(0);
                             }
                             break;
                         case 'Knight':
@@ -68,7 +66,7 @@ export default class Game {
                 if (move.capturedPiece !== undefined) {
                     moveString += 'x';
                 }
-                moveString += Game.#getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
+                moveString += Game.getAlgebraicCoords(move.newCoords[1], move.newCoords[0]);
             }
             if (move.promotion) {
                 moveString += `=${move.piece.constructor.name.charAt(0)}`;

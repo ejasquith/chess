@@ -85,6 +85,13 @@ main {
     cursor: pointer;
 }
 
+#close-htp-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 150%;
+}
+
 #promotion-btn-container {
     flex-wrap: wrap;
 }

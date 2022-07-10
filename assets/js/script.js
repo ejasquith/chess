@@ -30,6 +30,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('colour-btn').addEventListener('click', function() {
         let modal = document.getElementById('colour-modal');
+        if (modal.classList.contains('closed')) {
+            modal.classList.remove('closed');
+            modal.classList.add('open');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('closed');
+            overlay.classList.add('open');
+        }
+    });
+
+    document.getElementById('brown-btn').addEventListener('click', function() {
+        Board.getInstance().lightColour = '#ebd7b2';
+        Board.getInstance().darkColour = '#ac8561';
+
+        clearHighlights();
+
+        let modal = document.getElementById('colour-modal');
+        if (modal.classList.contains('open')) {
+            modal.classList.remove('open');
+            modal.classList.add('closed');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('open');
+            overlay.classList.add('closed');
+        }
+    });
+    document.getElementById('blue-btn').addEventListener('click', function() {
+        Board.getInstance().lightColour = '#d4dee3';
+        Board.getInstance().darkColour = '#7e95a9';
+
+        clearHighlights();
+
+        let modal = document.getElementById('colour-modal');
+        if (modal.classList.contains('open')) {
+            modal.classList.remove('open');
+            modal.classList.add('closed');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('open');
+            overlay.classList.add('closed');
+        }
+    });
+    document.getElementById('green-btn').addEventListener('click', function() {
+        Board.getInstance().lightColour = '#ededd0';
+        Board.getInstance().darkColour = '#779355';
+
+        clearHighlights();
+
+        let modal = document.getElementById('colour-modal');
         if (modal.classList.contains('open')) {
             modal.classList.remove('open');
             modal.classList.add('closed');

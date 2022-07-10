@@ -12,8 +12,8 @@ export default class Board {
         this.array = [];
         this.selectedPiece = undefined;
         this.initialiseBoard();
-        this.lightColour = '#ebd7b2';
-        this.darkColour = '#ac8561';
+        this.lightColour = '#d4dee3';
+        this.darkColour = '#7e95a9';
     }
 
     static getInstance() {

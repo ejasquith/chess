@@ -58,8 +58,7 @@ main {
     color: white;
     overflow: scroll;
     height: 100vh;
-    max-height: calc(100vh - 150px - 100vw);
-    max-height: calc(var(--vh)*100 - 150px - 100vw);
+    max-height: calc(100vh - 175px - 100vw);
 }
 
 #score-counter {

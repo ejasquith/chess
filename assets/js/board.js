@@ -120,8 +120,8 @@ export default class Board {
 
             let options = ['Queen', 'Rook', 'Bishop', 'Knight'];
             for (let option of options) {
-                let btn = document.createElement('button');
-                btn.innerHTML = option;
+                let btn = document.createElement('div');
+                btn.innerHTML = `<img src='assets/images/${option.toLowerCase()}-${Game.getInstance().activePlayer}.png' alt='${option}'>`;
                 btn.setAttribute('class', 'promotion-btn');
                 btn.setAttribute('id', `promotion-btn-${option.toLowerCase()}`);
                 document.getElementById('promotion-modal').appendChild(btn);

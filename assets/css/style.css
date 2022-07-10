@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #636363;
 }
 
 header {
@@ -36,8 +37,10 @@ main {
     margin: 10px auto 0 auto;
     width: 90%;
     height: 200px;
-    border: 1px solid black;
+    background-color: #4d4e4f;
     border-radius: 5px;
+    color: white;
+    overflow: scroll;
 }
 
 .square {
@@ -60,8 +63,9 @@ main {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
-    height: 800px;
+    width: 80%;
+    /*height: 800px;*/
+    max-height: 80%;
     background-color: white;
     z-index: 1;
     overflow: scroll;
@@ -71,4 +75,20 @@ main {
 }
 .closed {
     display: none;
+}
+
+.promotion-btn {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    border-radius: 2px;
+    display: inline-block;
+}
+.promotion-btn:hover {
+    background-color: #aaa;
+}
+.promotion-btn img {
+    width: 100px;
+    height: 100px;
 }

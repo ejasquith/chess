@@ -199,6 +199,11 @@ main {
         height: 200px;
         max-height: 100%;
     }
+
+    #how-to-play {
+        width: 90%;
+        height: 90%;
+    }
 }
 
 @media screen and (min-width: 900px) {

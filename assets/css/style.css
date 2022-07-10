@@ -26,6 +26,9 @@ header {
 .flex-container {
     display: flex;
 }
+.grid-container {
+    display: grid;
+}
 
 #header-btns {
     float: right;
@@ -143,4 +146,32 @@ main {
 .promotion-btn img {
     width: 100px;
     height: 100px;
+}
+
+.colour-btn {
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    width: 100px;
+    height: 100px;
+}
+
+#blue-btn .dark {
+    background-color: #7e95a9;
+}
+#blue-btn .light {
+    background-color: #d4dee3;
+}
+
+#brown-btn .dark {
+    background-color: #ac8561;
+}
+#brown-btn .light {
+    background-color: #ebd7b2;
+}
+
+#green-btn .dark {
+    background-color: #779355;
+}
+#green-btn .light {
+    background-color: #ededd0;
 }

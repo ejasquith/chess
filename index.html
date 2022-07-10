@@ -15,20 +15,15 @@
 </head>
 <body>
     <header>
-        <!--img src="assets/images/queen-white.png" alt="A white Queen piece" id="header-image"-->
-
-        <span id="header-text">
-            <h1>Chess</h1>
-            <p>By <a href="https://github.com/ejasquith" target="_blank">Emily Asquith</a></p>
-        </span>
-
-        <span id="header-btns">
-            <i class="fa-solid fa-palette btn" id="colour-btn"></i>
-            <i class="fa-solid fa-circle-question btn" id="how-to-play-btn"></i>
-            <i class="fa-solid fa-arrow-rotate-right btn"></i>
-            <!-- <button class="btn" id="how-to-play-btn">How to Play</button>
-            <button class="btn" id="colour-btn">Colour Scheme</button> -->
-        </span>
+        <div class="header-btn">
+            <i class="fa-solid fa-circle-question btn" id="how-to-play-btn" aria-label="Open how to play instructions"></i>
+        </div>
+        <div class="header-btn">
+            <i class="fa-solid fa-arrow-rotate-right btn" aria-label="Restart game"></i>
+        </div>
+        <div class="header-btn">
+            <i class="fa-solid fa-palette btn" id="colour-btn" aria-label="Change colour scheme"></i>
+        </div>
     </header>
 
     <div class="modal-overlay closed">

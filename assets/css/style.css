@@ -8,16 +8,35 @@ header {
     height: 100px;
     width: 100%;
     background-color: red;
+    font-size: 2rem;
+    line-height:100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.header-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flex-container {
     display: flex;
 }
 
-#header-text {
-}
-#header-text * {
-    display: inline-block;
+/* #header-icon {
+    float: left;
+    font-size: 200%;
+    width: 20%;
+    height: 100%;
+    line-height: 100%;
+} */
+#header-btns {
+    float: right;
+    width: 80%;
+    height: 100%;
+    line-height: 100%;
 }
 
 main {

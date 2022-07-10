@@ -49,3 +49,11 @@ As a user, I want to:
 - The site will have an area to display the previous moves in the current game and arrow buttons to cycle through the moves;
 - The site will store the amount of games in the session, and track which player played with which colour each game;
 - The site will display the amount of session wins for each player.
+
+# Design Stage
+
+## Colour Palette
+
+I decided to use a dark colour theme for this project, using blue-greys (#565566 and #333c46) for background elements and white text. The chess board itself will have different colour schemes to choose from, with the default being an icy blue to match the rest of the site.
+
+![The colour palette of the site](docs/images/colour-palette.png)

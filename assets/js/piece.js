@@ -7,6 +7,7 @@ export default class Piece {
         this.hasMoved = false;
     }
     
+    // Overridden by subclasses
     getValidMoves(board, lookForChecks = true) {}
 
     move(file, rank, callback) {

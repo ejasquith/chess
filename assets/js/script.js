@@ -154,7 +154,6 @@ function displayValidMoves(moves) {
     clearHighlights();
     for (let square of squares) {
         let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
-        // moves.includes(...) didn't work - possibly because two arrays with the same data inside aren't identical
         for (let move of moves) {
             if (squareCoords[0] === move[0] && squareCoords[1] === move[1]) {
                 square.style.backgroundColor = (squareCoords[0] % 2 === 0 ^ squareCoords[1] % 2 === 0) ? 

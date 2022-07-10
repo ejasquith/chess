@@ -52,13 +52,21 @@ main {
 }
 
 #info {
-    margin: 10px auto 0 auto;
+    margin: 25px auto 0 auto;
+    padding: 5px;
     width: 90%;
     height: 200px;
     background-color: #333c46;
     border-radius: 5px;
     color: white;
     overflow: scroll;
+}
+
+#score-counter {
+    text-align: center;
+}
+
+#game-history {
     font-family: 'IBM Plex Mono', monospace;
 }
 

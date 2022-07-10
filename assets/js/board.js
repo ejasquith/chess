@@ -114,9 +114,7 @@ export default class Board {
 
             let overlay = modal.parentElement;
             overlay.classList.remove('closed');
-            overlay.classList.add('open');            
-
-            modal.innerHTML = '<p>Choose piece to promote to:</p>';
+            overlay.classList.add('open');
 
             let options = ['Queen', 'Rook', 'Bishop', 'Knight'];
             for (let option of options) {
@@ -124,7 +122,7 @@ export default class Board {
                 btn.innerHTML = `<img src='assets/images/${option.toLowerCase()}-${Game.getInstance().activePlayer}.png' alt='${option}'>`;
                 btn.setAttribute('class', 'promotion-btn btn');
                 btn.setAttribute('id', `promotion-btn-${option.toLowerCase()}`);
-                document.getElementById('promotion-button-container').appendChild(btn);
+                document.getElementById('promotion-btn-container').appendChild(btn);
             }
 
             let promotionButtons = document.getElementsByClassName('promotion-btn');

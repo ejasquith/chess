@@ -86,7 +86,7 @@ main {
 }
 
 #promotion-btn-container {
-    
+    flex-wrap: wrap;
 }
 
 .promotion-btn {

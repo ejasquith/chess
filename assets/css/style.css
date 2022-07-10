@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #565566;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 header {
@@ -58,6 +59,7 @@ main {
     border-radius: 5px;
     color: white;
     overflow: scroll;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 .square {

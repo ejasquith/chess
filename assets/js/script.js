@@ -71,7 +71,7 @@ function initialiseHTML(boardTemp) {
             node.setAttribute('data-file', file);
             node.setAttribute('data-rank', rank);
             node.style.backgroundColor = (rank % 2 === 0 ^ file % 2 === 0) ? 
-                node.style.backgroundColor = '#ebd7b2' : node.style.backgroundColor = '#ac8561';
+                node.style.backgroundColor = Board.getInstance().lightColour : node.style.backgroundColor = Board.getInstance().darkColour;
             if (boardTemp[rank][file] !== undefined) {
                 node.style.backgroundImage = `url(assets/images/${boardTemp[rank][file].constructor.name.toLowerCase()}-${boardTemp[rank][file].colour}.png)`;
             }
@@ -108,7 +108,7 @@ function clearHighlights() {
     for (let square of squares) {
         let squareCoords = [parseInt(square.getAttribute('data-rank')), parseInt(square.getAttribute('data-file'))];
         square.style.backgroundColor = (squareCoords[0] % 2 === 0 ^ squareCoords[1] % 2 === 0) ? 
-            square.style.backgroundColor = '#ebd7b2' : square.style.backgroundColor = '#ac8561';
+            square.style.backgroundColor = Board.getInstance().lightColour : square.style.backgroundColor = Board.getInstance().darkColour;
     }
 }
 

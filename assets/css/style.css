@@ -35,7 +35,7 @@ header {
 }
 
 main {
-    margin-top: 50px;
+    margin-top: 25px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -55,11 +55,13 @@ main {
     margin: 25px auto 0 auto;
     padding: 5px;
     width: 90%;
-    height: 200px;
     background-color: #333c46;
     border-radius: 5px;
     color: white;
     overflow: scroll;
+    height: 100vh;
+    max-height: calc(100vh - 75px - 25px - 100vw - 50px);
+    min-height: 150px;
 }
 
 #score-counter {

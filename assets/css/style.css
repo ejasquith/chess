@@ -37,8 +37,6 @@ header {
 main {
     margin-top: 25px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 #board {
@@ -60,8 +58,7 @@ main {
     color: white;
     overflow: scroll;
     height: 100vh;
-    max-height: calc(100vh - 75px - 25px - 100vw - 50px);
-    min-height: 150px;
+    max-height: calc(100vh - 150px - 100vw);
 }
 
 #score-counter {

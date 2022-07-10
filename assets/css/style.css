@@ -194,6 +194,11 @@ main {
         flex-direction: row;
         justify-content: center;
     }
+
+    #info {
+        height: 200px;
+        max-height: 100%;
+    }
 }
 
 @media screen and (min-width: 900px) {

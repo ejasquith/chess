@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.classList.remove('closed');
             overlay.classList.add('open');
         }
-    })
+    });
 
     document.getElementById('close-htp-btn').addEventListener('click', function() {
         let modal = document.getElementById('how-to-play');
@@ -26,7 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.classList.remove('open');
             overlay.classList.add('closed');
         }
-    })
+    });
+
+    document.getElementById('colour-btn').addEventListener('click', function() {
+        let modal = document.getElementById('colour-modal');
+        if (modal.classList.contains('open')) {
+            modal.classList.remove('open');
+            modal.classList.add('closed');
+
+            let overlay = modal.parentElement;
+            overlay.classList.remove('open');
+            overlay.classList.add('closed');
+        }
+    });
 
     document.getElementById('restart-btn').addEventListener('click', startNewGame);
 });

@@ -124,7 +124,7 @@ export default class Board {
                 btn.innerHTML = `<img src='assets/images/${option.toLowerCase()}-${Game.getInstance().activePlayer}.png' alt='${option}'>`;
                 btn.setAttribute('class', 'promotion-btn btn');
                 btn.setAttribute('id', `promotion-btn-${option.toLowerCase()}`);
-                document.getElementById('promotion-modal').appendChild(btn);
+                document.getElementById('promotion-button-container').appendChild(btn);
             }
 
             let promotionButtons = document.getElementsByClassName('promotion-btn');

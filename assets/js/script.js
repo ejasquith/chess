@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function startNewGame() {
-    Board.resetInstance();
+    Board.getInstance().initialiseBoard();
     Game.resetInstance();
     let board = Board.getInstance().array;
     initialiseHTML(board.reverse());

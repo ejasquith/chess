@@ -23,12 +23,8 @@ export default class Board {
         return Board.instance;
     }
 
-    static resetInstance() {
-        Board.instance = undefined;
-        return Board.getInstance();
-    }
-
     initialiseBoard() {
+        this.array = [];
         for (let rank = 7; rank >= 0; rank--) {
             let rankArray = [];
             let colour = (rank <= 1) ? 'white' : 'black';

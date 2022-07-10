@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.classList.add('closed');
         }
     })
+
+    document.getElementById('restart-btn').addEventListener('click', startNewGame);
 });
 
 function startNewGame() {

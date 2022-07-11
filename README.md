@@ -8,9 +8,35 @@ The purpose of this project is to provide a simple, browser-based tool for two p
 
 The beauty of chess lies in the fact that it can be as easy or difficult as you want - two beginners throwing pieces around may get as much satisfaction or enjoyment as two Grandmasters at the very top level playing the most important game of their lives. This is what the project aims to achieve - anyone at any level can enjoy using the site.
 
-# Table of Content
+# Table of Contents
 
-[to implement]
+- [Planning Stage](#planning-stage)
+    - [Target Audience](#target-audience)
+    - [User Stories](#user-stories)
+    - [Site Aims](#site-aims)
+    - [How This Will Be Achieved](#how-this-will-be-achieved)
+- [Design Stage](#design-stage)
+    - [Colour Palette](#colour-palette)
+    - [Fonts](#fonts)
+- [Development Stage](#development-stage)
+    - [Game Logic](#game-logic)
+    - [Code Architecture](#code-architecture)
+- [Site Features](#site-features)
+    - [How To Play](#how-to-play)
+    - [Colour Customisation](#colour-customisation)
+    - [Reset Button](#reset-button)
+    - [Score Counter](#score-counter)
+    - [Moving Pieces](#moving-pieces)
+    - [Checkmate](#checkmate)
+    - [Other Game End Conditions](#other-game-end-conditions)
+    - [Captures](#captures)
+- [Discarded Features](#discarded-features)
+- [Testing](#testing)
+    - [Bugs](#bugs)
+    - [Manual Testing](#manual-testing)
+    - [Code Validation](#code-validation)
+- [Deployment](#deployment)
+- [Credits](#credits)
 
 # Planning Stage
 

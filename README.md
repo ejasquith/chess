@@ -188,3 +188,11 @@ I checked my JavaScript code using [https://jshint.com/](JSHint).
 - There were no errors found.
 - There were some warnings about various features not being compatible with all versions of ECMAScript, in particular classes.
     - Given more time for study and development, I would have liked to implement a polyfill to ensure the code would work with all browsers running all versions of ECMAScript. If I were to restart the project, this would be included.
+
+### Lighthouse
+
+I checked my site's metrics using lighthouse through [web.dev/measure](web.dev/measure), which uses a lab environment to ensure local conditions would not affect the score.  
+
+Initially, the SEO and accessibility scores were 91. This was because of the lack of a meta description and incorrect use of aria labels respectively. Once I added a meta description and added `role="button"` to divs with an aria label, both scores went to 100. There were no issues with either the performance or best practices scores that needed addressing.
+
+![The site's lighthouse scores](docs/images/lighthouse.png)

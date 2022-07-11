@@ -157,3 +157,11 @@ There were a number of bugs that cropped up during the development process.
     - I fixed this by creating deep copies with the map function, allowing me to make changes without affecting the original.
 - In the algorithm to look for checks, it would call the getValidMoves function for each enemy piece to determine whether the king could be captured by it. The problem was that the getValidMoves function also called the function to look for checks, leading to an infinitely recursing loop.
     - To fix this, I added an optional parameter to the getValidMoves functions called lookForChecks that would default to true and some basic selection logic, but when called from the algorithm to find checks I could pass in false, meaning it would not recurse.
+
+## Manual Testing
+
+At every stage during development after any new feature was implemented, I checked the site in-browser using a simulated server and used Firefox DevTools to ensure responsivity. I also checked the published site (via GitHub Pages) in case of any unexpected differences.  
+
+Once the site was completed, I again checked the published site using Firefox, as well as Chrome, Opera and Edge to ensure full cross-compatibility, using each browser's built in dev tools to simulate different screen sizes.  
+
+The site was also tested using a real mobile device. Unfortunately I didn't have a tablet available to use, so had to rely on the information gathered using dev tools for medium-small screen sizes.

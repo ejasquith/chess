@@ -196,3 +196,7 @@ I checked my site's metrics using lighthouse through [web.dev/measure](https://w
 Initially, the SEO and accessibility scores were 91. This was because of the lack of a meta description and incorrect use of aria labels respectively. Once I added a meta description and added `role="button"` to divs with an aria label, both scores went to 100. There were no issues with either the performance or best practices scores that needed addressing.
 
 ![The site's lighthouse scores](docs/images/lighthouse.png)
+
+### WAVE
+
+I used [WAVE](https://wave.webaim.org) to ensure my site was accessible. No errors or issues were found.

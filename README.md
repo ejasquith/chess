@@ -200,3 +200,14 @@ Initially, the SEO and accessibility scores were 91. This was because of the lac
 ### WAVE
 
 I used [WAVE](https://wave.webaim.org) to ensure my site was accessible. No errors or issues were found.
+
+# Deployment
+
+The site was deployed using GitHub Pages with the following steps:
+
+1. From the repository page, click on "Settings".
+2. Under "Code and automation", click "Pages".
+3. Under "Source", select the main branch and click save.
+4. Tick the box labelled "Enforce HTTPS"
+
+The published site can be found at [https://ejasquith.github.io/chess](https://ejasquith.github.io/chess)

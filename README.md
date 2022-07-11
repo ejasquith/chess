@@ -90,7 +90,7 @@ Below the header is the chessboard, which is the most prominent element on the s
 
 ![A screenshot of the how to play modal](docs/images/how-to-play.png)
 
-The how to play modal contains information for new players, including how the pieces move, how the game ends, and supplementary material published by [chess.com](chess.com).
+The how to play modal contains information for new players, including how the pieces move, how the game ends, and supplementary material published by [chess.com](https://chess.com).
 
 ## Colour Customisation
 
@@ -172,18 +172,18 @@ All code was passed through validation tools to ensure compliance with web stand
 
 ### HTML
 
-All HTML code was passed through [https://validator.w3.org/nu/](the W3C validator).
+All HTML code was passed through [the W3C validator](https://validator.w3.org/nu/).
 
 - The only issue that came up was "possible incorrect use of aria labels" on div elements.
     - I added `role="button"` to the divs in question, and the code passed with no errors or warnings.
 
 ### CSS
 
-CSS code was checked using [https://jigsaw.w3.org/css-validator/](the W3C CSS validator). No issues were found.
+CSS code was checked using [The W3C CSS validator](https://jigsaw.w3.org/css-validator/). No issues were found.
 
 ### JavaScript
 
-I checked my JavaScript code using [https://jshint.com/](JSHint).
+I checked my JavaScript code using [JSHint](https://jshint.com).
 
 - There were no errors found.
 - There were some warnings about various features not being compatible with all versions of ECMAScript, in particular classes.
@@ -191,7 +191,7 @@ I checked my JavaScript code using [https://jshint.com/](JSHint).
 
 ### Lighthouse
 
-I checked my site's metrics using lighthouse through [web.dev/measure](web.dev/measure), which uses a lab environment to ensure local conditions would not affect the score.  
+I checked my site's metrics using lighthouse through [web.dev/measure](https://web.dev/measure), which uses a lab environment to ensure local conditions would not affect the score.  
 
 Initially, the SEO and accessibility scores were 91. This was because of the lack of a meta description and incorrect use of aria labels respectively. Once I added a meta description and added `role="button"` to divs with an aria label, both scores went to 100. There were no issues with either the performance or best practices scores that needed addressing.
 

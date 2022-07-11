@@ -211,3 +211,11 @@ The site was deployed using GitHub Pages with the following steps:
 4. Tick the box labelled "Enforce HTTPS"
 
 The published site can be found at [https://ejasquith.github.io/chess](https://ejasquith.github.io/chess)
+
+# Credits
+
+- MDN, Stack Overflow, and W3Schools were used as general reference throughout the development of the project.
+- Images of chess pieces originally by Cburnett from [https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces](https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces)
+- Colour palette generated with Coolors
+- Fonts sourced from Google Fonts
+- Icons from Font Awesome

@@ -136,6 +136,15 @@ A game can end in a draw in a number of ways. If a position is repeated three ti
 
 When a piece can move into the same square as an enemy piece, that piece is captured and removed from the board.
 
+# Discarded Features
+
+Unfortunately, some features I originally planned to include simply weren't feasible due to time constraints.
+
+- I had planned to include a way for users to cycle through the game history and see the changes on the board.
+    - The way I implemented the game history didn't lend itself to this, and by the time I realised this I didn't have time to rework the whole system.
+- At first, the score system would have allowed players to enter their name, and it would track wins for the player regardless of what colour they were playing at the time.
+    - If I were to add more to the project this would be a fairly simple fix. Unfortunately, time constraints again meant I did not include it in the final project.
+
 # Testing
 
 The code was tested manually throughout the project, helping massively with finding and fixing bugs.

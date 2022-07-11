@@ -135,3 +135,25 @@ A game can end in a draw in a number of ways. If a position is repeated three ti
 ## Captures
 
 When a piece can move into the same square as an enemy piece, that piece is captured and removed from the board.
+
+# Testing
+
+The code was tested manually throughout the project, helping massively with finding and fixing bugs.
+
+## Bugs
+
+There were a number of bugs that cropped up during the development process.
+
+- When castling, valid moves would be displayed as if the pieces were in their original position.
+    - I realised this was because I had updated the board to display pieces in their correct position and could be selected, but hadn't updated the objects properties to reflect its new coordinates, which is what is used to determine valid moves.
+    - Once I had updated the code to properly update the objects, castling worked as expected.
+- When implementing the 50 move rule for draws (no pawn move or capture in the last 50 moves), I realised that moving a knight on the first move caused the game to end in a draw.
+    - This was because I didn't have logic to check if the game hadn't been more than 50 moves - the algorithm simply ened up looking at the entire game, seeing no pawn moves or captures had been made, and declaring the game a draw.
+    - I added a simple if statement to check that the game had been at least 50 moves long and moved the logic inside of that, which fixed the issue.
+- Background images for squares with pieces didn't display on the deployed site.
+    - This was because I used filepaths relative to the JavaScript file, where the URLs were being set programmatically. It didn't occur to me that because the files would be looked up by the HTML file, the paths should be relative to that.
+    - After removing ../ from the beginning of each URL, the site functioned as expected.
+- I ran into issues with the way arrays are implemented, in particular with the logic to see if making a certain move would put either player in check - as they are passed by reference rather than value, making a change to an array I thought was only a copy also changed the original array.
+    - I fixed this by creating deep copies with the map function, allowing me to make changes without affecting the original.
+- In the algorithm to look for checks, it would call the getValidMoves function for each enemy piece to determine whether the king could be captured by it. The problem was that the getValidMoves function also called the function to look for checks, leading to an infinitely recursing loop.
+    - To fix this, I added an optional parameter to the getValidMoves functions called lookForChecks that would default to true and some basic selection logic, but when called from the algorithm to find checks I could pass in false, meaning it would not recurse.

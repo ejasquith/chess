@@ -165,3 +165,26 @@ At every stage during development after any new feature was implemented, I check
 Once the site was completed, I again checked the published site using Firefox, as well as Chrome, Opera and Edge to ensure full cross-compatibility, using each browser's built in dev tools to simulate different screen sizes.  
 
 The site was also tested using a real mobile device. Unfortunately I didn't have a tablet available to use, so had to rely on the information gathered using dev tools for medium-small screen sizes.
+
+## Code Validation
+
+All code was passed through validation tools to ensure compliance with web standards.
+
+### HTML
+
+All HTML code was passed through [https://validator.w3.org/nu/](the W3C validator).
+
+- The only issue that came up was "possible incorrect use of aria labels" on div elements.
+    - I added `role="button"` to the divs in question, and the code passed with no errors or warnings.
+
+### CSS
+
+CSS code was checked using [https://jigsaw.w3.org/css-validator/](the W3C CSS validator). No issues were found.
+
+### JavaScript
+
+I checked my JavaScript code using [https://jshint.com/](JSHint).
+
+- There were no errors found.
+- There were some warnings about various features not being compatible with all versions of ECMAScript, in particular classes.
+    - Given more time for study and development, I would have liked to implement a polyfill to ensure the code would work with all browsers running all versions of ECMAScript. If I were to restart the project, this would be included.

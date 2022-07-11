@@ -75,3 +75,63 @@ The board was represented by a two-dimensional array, with piece objects inside 
 Part way through the project, I decided to implement an MVC (model-view-controller) architecture. The benefits of this architecture lie in the separation of logic - how the program implements the game is kept entirely separate from how it is displayed in the browser. This makes the code inherently reusable - it's essentially a plug & play system, where the backend can be plugged into any front end implementation (to give an out-there example, it could work with a VR game).  
 
 This however was never implemented fully - while the logic is mostly separated, there is some view logic inside what should be the controller. Had I had more time or were to restart the project, I would keep the MVC architecture in mind from the start to avoid this.
+
+# Site Features
+
+![A screenshot of the site on desktop](docs/images/full-site.png)
+
+![A screenshot of the site on mobile](docs/images/full-site-mobile.png)
+
+The site is designed to be a single page application, will all information needed to play displayed on the screen at once. The header consists of three buttons - one to open a "how to play" modal, one to reset the board, and one to open a modal to change the colour scheme of the board.  
+
+Below the header is the chessboard, which is the most prominent element on the site. This displays the state of the game and allows the user to interact with the site. Next to the board (or beneath it on smaller screens) is an info section, which displays the session score for white and black, and displays the game history in PGN format.
+
+## How to Play
+
+![A screenshot of the how to play modal](docs/images/how-to-play.png)
+
+The how to play modal contains information for new players, including how the pieces move, how the game ends, and supplementary material published by [chess.com](chess.com).
+
+## Colour Customisation
+
+![A screenshot of the colour customisation modal](docs/images/colour-scheme.png)
+![A screenshot of the site using the brown colour scheme](docs/images/colour-scheme-brown.png)
+![A screenshot of the site using the green colour scheme](docs/images/colour-scheme-green.png)
+
+The colour scheme button allows the user to edit the colours of the chessboard. It opens a modal displaying a preview of each colour scheme.
+
+## Reset Button
+
+The reset button ends the current game and starts a new one, moving all pieces back to their starting squares and clearing the game history.
+
+## Score Counter
+
+The session score counter displays the score for each colour in the current site session. It increments by 1 when a player wins a game, and 0.5 for each colour for a draw.
+
+![A screenshot of the score counter](docs/images/score.png)
+
+## Moving Pieces
+
+As this game is geared towards casual players or those less familiar with chess, I decided to have valid moves for a selected piece be highlighted. The piece is selected simply by clicking or tapping on it.
+
+![A screenshot of the board with a pawn's available moves being displayed](docs/images/display-moves.png)
+
+The piece can then be moved by clicking or tapping on one of the highlighted squares. If a different piece is clicked, the old piece will be deselected and the moves for the new piece highlighted. If an empty square or a square containing a piece of the wrong colour is clicked, the piece will be deselected and the highlights removed.  
+
+Once the piece is moved, the board is updated to reflect its new position and the move is recorded in the game history, and it is then the other player's turn to move.
+
+## Checkmate
+
+The way to win a game of chess is by placing your opponent in checkmate - ie., they are in check and there is nothing they can do to prevent their king from being captured on the next turn. When this occurs, an alert is displayed to the user, the session score counter updates, and the game resets.
+
+![A screenshot of the site displaying the checkmate alert](docs/images/checkmate.png)
+
+## Other Game End Conditions
+
+A game can end in a draw in a number of ways. If a position is repeated three times throughout the game, if a player has no valid moves but is not in check, or if 50 moves pass without a pawn moving or a capture taking place, the game ends in a draw. When this happens, the same procedure as checkmate is followed, except the alert specifies which type of draw occured.
+
+![A screenshot of the site after a draw by threefold repetition](docs/images/draw.png)
+
+## Captures
+
+When a piece can move into the same square as an enemy piece, that piece is captured and removed from the board.
